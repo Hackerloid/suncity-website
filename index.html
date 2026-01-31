@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Welcome to SUNCITY TECHNOLOGY. We provide innovative and secure IT solutions for modern businesses." />
+    <meta name="keywords" content="SUNCITY TECHNOLOGY, IT Solutions, Cybersecurity, Networking, Software Development" />
+    <title>SUNCITY TECHNOLOGY</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #0d1b2a;
+        }
+
+        header {
+            background: #0d1b2a;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #ff8c00;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: url('images/home.png') no-repeat center center/cover;
+            color: #fff;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        .buttons .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .buttons .btn-primary {
+            background-color: #ff8c00;
+            color: #0d1b2a;
+        }
+
+        .buttons .btn-primary:hover {
+            background-color: #e67e00;
+        }
+
+        .buttons .btn-outline {
+            background-color: transparent;
+            color: #ff8c00;
+            border: 2px solid #ff8c00;
+        }
+
+        .buttons .btn-outline:hover {
+            background-color: #ff8c00;
+            color: #0d1b2a;
+        }
+
+        .services-preview {
+            padding: 6rem 2rem;
+            background: #0d1b2a;
+            color: #fff;
+        }
+
+        .services-preview h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #ff8c00;
+        }
+
+        .services-preview .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-preview .service-card {
+            background: #1b263b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-preview .service-card h3 {
+            margin-bottom: 1rem;
+            color: #ff8c00;
+        }
+
+        .cta-section {
+            padding: 6rem 2rem;
+            background: #1b263b;
+            color: #fff;
+            text-align: center;
+        }
+
+        .cta-section a {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #ff8c00;
+            color: #0d1b2a;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-section a:hover {
+            background-color: #e67e00;
+        }
+
+        footer {
+            background: #0d1b2a;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="SUNCITY TECHNOLOGY Logo">
+        <span>SUNCITY TECHNOLOGY</span>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Powering Innovation. Securing the Future.</h1>
+    <p>Smart, secure and reliable IT solutions for modern businesses.</p>
+    <div class="buttons">
+        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+        <a href="services.html" class="btn btn-outline">Our Services</a>
+    </div>
+</section>
+
+<section class="services-preview">
+    <h2>What We Do</h2>
+    <div class="grid">
+        <div class="service-card">
+            <h3>IT Support</h3>
+            <p>Reliable IT support to keep your business running smoothly.</p>
+        </div>
+        <div class="service-card">
+            <h3>Cybersecurity</h3>
+            <p>Protect your digital assets with advanced security solutions.</p>
+        </div>
+        <div class="service-card">
+            <h3>Networking</h3>
+            <p>Design and implement robust network infrastructures.</p>
+        </div>
+        <div class="service-card">
+            <h3>Software Development</h3>
+            <p>Custom software solutions tailored to your needs.</p>
+        </div>
+        <div class="service-card">
+            <h3>Web Development</h3>
+            <p>Create modern, responsive, and user-friendly websites.</p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2>Ready to Transform Your Business?</h2>
+    <p>Let SUNCITY TECHNOLOGY help you achieve your goals with innovative and secure IT solutions.</p>
+    <a href="contact.html">Get Started</a>
+</section>
+
+<footer>
+    <p>© 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
+    <p>Follow us on <a href="#">LinkedIn</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a></p>
+</footer>
+
+</body>
+</html>
