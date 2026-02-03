@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book a technical consultation with SUNCITY TECHNOLOGY. Schedule your cybersecurity, networking, or software development strategy session.">
+    <title>Book a Consultation - SUNCITY TECHNOLOGY</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Suncity Logo">
+                <span>SUNCITY TECHNOLOGY</span>
+            </div>
+            <nav aria-label="Main Navigation">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'contact' %}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-50" aria-label="Booking Hero">
+        <div class="container text-center">
+            <h1 class="fs-1 mb-2">Book a <span class="text-gradient">Consultation</span></h1>
+            <p class="max-w-800 mx-auto fs-lg text-muted">
+                Schedule a professional session with our experts to discuss your technology requirements and strategy.
+            </p>
+        </div>
+    </section>
+
+    <!-- Booking Content -->
+    <section class="section pt-0" aria-label="Booking Form">
+        <div class="container">
+            <div class="max-w-800 mx-auto">
+                <div class="card p-5">
+                    {% if success %}
+                    <div class="success-state">
+                        <div class="success-icon">
+                            <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        </div>
+                        <h2 class="text-gradient">Booking Received!</h2>
+                        <p>Your consultation request has been submitted. Our team will contact you shortly to confirm the appointment.</p>
+                        <a href="{% url 'index' %}" class="btn btn-outline">Back to Home</a>
+                    </div>
+                    {% else %}
+                    <h2 class="mb-4">Schedule Your Session</h2>
+                    <form method="POST" class="form-grid">
+                        {% csrf_token %}
+                        <div class="grid-2-col gap-2">
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.name.id_for_label }}">Full Name</label>
+                                {{ form.name }}
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.email.id_for_label }}">Email Address</label>
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="grid-2-col gap-2 mt-2">
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.phone.id_for_label }}">Phone Number</label>
+                                {{ form.phone }}
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.service.id_for_label }}">Interested Service</label>
+                                {{ form.service }}
+                            </div>
+                        </div>
+                        <div class="grid-2-col gap-2 mt-2">
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.date.id_for_label }}">Preferred Date</label>
+                                {{ form.date }}
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="{{ form.time.id_for_label }}">Preferred Time</label>
+                                {{ form.time }}
+                            </div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="form-label" for="{{ form.message.id_for_label }}">Additional Notes</label>
+                            {{ form.message }}
+                        </div>
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">Confirm Booking Request</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">SUNCITY</span>
+                    </div>
+                    <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="{% url 'services' %}">Cybersecurity</a></li>
+                        <li><a href="{% url 'services' %}">Networking</a></li>
+                        <li><a href="{% url 'services' %}">Software Dev</a></li>
+                        <li><a href="{% url 'services' %}">IT Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

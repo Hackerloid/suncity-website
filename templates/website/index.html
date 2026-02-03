@@ -24,7 +24,9 @@
                 <a href="{% url 'index' %}">Home</a>
                 <a href="{% url 'services' %}">Services</a>
                 <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'blog_list' %}">Blog</a>
                 <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'book_consultation' %}" class="btn btn-primary" style="padding: 0.5rem 1.5rem; margin-left: 1rem;">Book Now</a>
             </nav>
         </div>
     </header>
@@ -38,7 +40,7 @@
                 <h1>Smart, Secure &amp; Reliable <span class="text-gradient">Technology Solutions</span></h1>
                 <p>We provide advanced cybersecurity, robust networking, and custom software solutions to power and protect modern businesses.</p>
                 <div class="hero-buttons">
-                    <a href="{% url 'contact' %}" class="btn btn-primary">Get Started</a>
+                    <a href="{% url 'book_consultation' %}" class="btn btn-primary">Book Consultation</a>
                     <a href="{% url 'services' %}" class="btn btn-outline">Our Services</a>
                 </div>
             </div>
@@ -76,26 +78,15 @@
                 <h2>Comprehensive IT Solutions</h2>
             </div>
             <div class="grid-cards">
-                <div class="card" data-service="cybersecurity">
-                    <div class="card-icon text-gradient"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-                    <h3>Cybersecurity</h3>
-                    <p>Advanced threat protection, firewall management, and security audits to keep your data safe.</p>
+                {% for service in services %}
+                <div class="card" data-service="{{ service.slug }}">
+                    <div class="card-icon text-gradient"><i class="fas {{ service.icon_class }}" aria-hidden="true"></i></div>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.tagline }}</p>
                 </div>
-                <div class="card" data-service="networking">
-                    <div class="card-icon text-gradient"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
-                    <h3>Networking</h3>
-                    <p>Scalable and secure network infrastructure design, implementation, and maintenance.</p>
-                </div>
-                <div class="card" data-service="it-support">
-                    <div class="card-icon text-gradient"><i class="fas fa-headset" aria-hidden="true"></i></div>
-                    <h3>IT Support</h3>
-                    <p>24/7 technical support and rapid response to ensure your business operations never stop.</p>
-                </div>
-                <div class="card" data-service="software-development">
-                    <div class="card-icon text-gradient"><i class="fas fa-code" aria-hidden="true"></i></div>
-                    <h3>Software Dev</h3>
-                    <p>Custom business software and web applications tailored to your specific operational needs.</p>
-                </div>
+                {% empty %}
+                <p class="text-muted text-center col-span-full">Explore our innovative IT services below.</p>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -154,22 +145,12 @@
                 <h2>Specialized Services</h2>
             </div>
             <div class="grid-cards">
-                <div class="card" data-service="cloud-solutions">
-                    <h3>Cloud Solutions</h3>
-                    <p>Secure cloud migration and management services for AWS and Azure environments.</p>
+                {% for service in services %}
+                <div class="card" data-service="{{ service.slug }}">
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.tagline }}</p>
                 </div>
-                <div class="card" data-service="data-recovery">
-                    <h3>Data Recovery</h3>
-                    <p>Robust backup solutions and disaster recovery planning to protect critical business data.</p>
-                </div>
-                <div class="card" data-service="system-integration">
-                    <h3>System Integration</h3>
-                    <p>Seamlessly connect your various software and hardware systems for unified operations.</p>
-                </div>
-                <div class="card" data-service="it-consulting">
-                    <h3>Consulting</h3>
-                    <p>Strategic IT consulting to align technology with your long-term business goals.</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -208,6 +189,39 @@
 
 
 
+    <!-- Latest Blog Posts -->
+    {% if latest_posts %}
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="text-gradient">LATEST UPDATES</h3>
+                <h2>From Our Blog</h2>
+            </div>
+            <div class="grid-cards">
+                {% for post in latest_posts %}
+                <article class="card p-0 overflow-hidden h-full flex flex-col">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                    {% else %}
+                    <div class="w-full h-48 bg-glass flex items-center justify-center">
+                        <i class="fas fa-newspaper text-gradient fs-1"></i>
+                    </div>
+                    {% endif %}
+                    <div class="p-4 flex flex-col flex-1">
+                        <p class="text-xs text-muted mb-1">{{ post.created_at|date:"M d, Y" }}</p>
+                        <h3 class="mb-2">{{ post.title }}</h3>
+                        <a href="{% url 'blog_detail' post.slug %}" class="text-primary fs-sm font-bold mt-auto">Read Story <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <a href="{% url 'blog_list' %}" class="btn btn-outline">View All Posts</a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
     <!-- CTA Section -->
     <section class="section">
         <div class="container">
@@ -215,7 +229,7 @@
                 <div class="cta-content">
                     <h2>Ready to Secure Your Future?</h2>
                     <p class="mb-2 max-w-600 mx-auto text-muted">Transform your business with SUNCITY TECHNOLOGY's advanced IT solutions today.</p>
-                    <a href="{% url 'contact' %}" class="btn btn-primary">Start Your Transformation</a>
+                    <a href="{% url 'book_consultation' %}" class="btn btn-primary">Start Your Transformation</a>
                 </div>
             </div>
         </div>
@@ -237,10 +251,10 @@
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -315,11 +329,31 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="{% url 'contact' %}" class="btn btn-primary w-100 mb-1">Get This Service</a>
+                <a href="{% url 'book_consultation' %}" class="btn btn-primary w-100 mb-1">Book This Service</a>
                 <a href="{% url 'contact' %}" class="btn btn-outline w-100">Talk to an Expert</a>
             </div>
         </div>
     </div>
+
+    <!-- Dynamic Service Data for JS -->
+    <script id="services-data" type="application/json">
+    {
+        {% for s in services %}
+        "{{ s.slug }}": {
+            "title": "{{ s.title|escapejs }}",
+            "icon": "{{ s.icon_class|escapejs }}",
+            "tagline": "{{ s.tagline|escapejs }}",
+            "offer": [
+                {% for item in s.offerings.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
+            ],
+            "why": "{{ s.why_it_matters|escapejs }}",
+            "who": [
+                {% for item in s.target_audience.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
+            ]
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    }
+    </script>
 
     <script src="{% static 'js/main.js' %}"></script>
 </body>

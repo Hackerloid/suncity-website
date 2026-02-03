@@ -24,7 +24,9 @@
                 <a href="{% url 'index' %}">Home</a>
                 <a href="{% url 'services' %}">Services</a>
                 <a href="{% url 'about' %}" aria-current="page">About</a>
+                <a href="{% url 'blog_list' %}">Blog</a>
                 <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'book_consultation' %}" class="btn btn-primary" style="padding: 0.5rem 1.5rem; margin-left: 1rem;">Book Now</a>
             </nav>
         </div>
     </header>
@@ -191,10 +193,10 @@
                 <div class="footer-col">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="#">About Us</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">

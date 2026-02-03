@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stay updated with the latest in technology, cybersecurity, and networking from SUNCITY TECHNOLOGY.">
+    <title>Blog - SUNCITY TECHNOLOGY</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Suncity Logo">
+                <span>SUNCITY TECHNOLOGY</span>
+            </div>
+            <nav aria-label="Main Navigation">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'contact' %}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-50" aria-label="Blog Hero">
+        <div class="container text-center">
+            <h1 class="fs-1 mb-2">Company <span class="text-gradient">Updates</span></h1>
+            <p class="max-w-800 mx-auto fs-lg text-muted">
+                Insights, news, and expert perspectives on the ever-evolving world of technology.
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="section pt-0" aria-label="Blog Posts">
+        <div class="container">
+            <div class="grid-cards">
+                {% for post in posts %}
+                <article class="card p-0 overflow-hidden h-full flex flex-col">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
+                    {% else %}
+                    <div class="w-full h-48 bg-glass flex items-center justify-center">
+                        <i class="fas fa-newspaper text-gradient fs-1"></i>
+                    </div>
+                    {% endif %}
+                    <div class="p-4 flex flex-col flex-1">
+                        <p class="text-xs text-muted mb-1">{{ post.created_at|date:"M d, Y" }} | By {{ post.author.get_full_name|default:post.author.username }}</p>
+                        <h3 class="mb-2">{{ post.title }}</h3>
+                        <p class="fs-sm text-muted mb-4 flex-1">{{ post.content|truncatewords:25 }}</p>
+                        <a href="{% url 'blog_detail' post.slug %}" class="text-primary fs-sm font-bold mt-auto">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </article>
+                {% empty %}
+                <div class="col-span-full text-center py-5">
+                    <p class="text-muted">No blog posts found. Check back soon!</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">SUNCITY</span>
+                    </div>
+                    <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="{% url 'services' %}">Cybersecurity</a></li>
+                        <li><a href="{% url 'services' %}">Networking</a></li>
+                        <li><a href="{% url 'services' %}">Software Dev</a></li>
+                        <li><a href="{% url 'services' %}">IT Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

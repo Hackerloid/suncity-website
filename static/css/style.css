@@ -143,6 +143,17 @@ img {
     transition: var(--transition);
 }
 
+select.form-input {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+select.form-input option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
 .form-input:focus {
     outline: none;
     border-color: var(--primary);

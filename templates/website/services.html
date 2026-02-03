@@ -25,7 +25,9 @@
                 <a href="{% url 'index' %}">Home</a>
                 <a href="{% url 'services' %}" aria-current="page">Services</a>
                 <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'blog_list' %}">Blog</a>
                 <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'book_consultation' %}" class="btn btn-primary" style="padding: 0.5rem 1.5rem; margin-left: 1rem;">Book Now</a>
             </nav>
         </div>
     </header>
@@ -52,39 +54,40 @@
     <section class="section pt-0" aria-label="Service List">
         <div class="container">
             <div class="grid-cards">
-                <div class="card" data-service="cybersecurity">
-                    <div class="card-icon text-gradient"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
-                    <h3>Cybersecurity</h3>
-                    <p>Comprehensive protection for your digital assets. We offer endpoint security, threat monitoring, and vulnerability assessments.</p>
+                {% for service in services %}
+                <div class="card" data-service="{{ service.slug }}">
+                    <div class="card-icon text-gradient"><i class="fas {{ service.icon_class }}" aria-hidden="true"></i></div>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.tagline }}</p>
                 </div>
-                <div class="card" data-service="it-support">
-                    <div class="card-icon text-gradient"><i class="fas fa-headset" aria-hidden="true"></i></div>
-                    <h3>IT Support</h3>
-                    <p>Reliable 24/7 technical support. From hardware troubleshooting to software assistance, we keep your business running.</p>
+                {% empty %}
+                <div class="col-span-full text-center py-5">
+                    <p class="text-muted">No services configured yet. Please add them in the admin.</p>
                 </div>
-                <div class="card" data-service="networking">
-                    <div class="card-icon text-gradient"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
-                    <h3>Networking</h3>
-                    <p>Robust network infrastructure design and implementation. Secure, scalable, and high-performance connectivity solutions.</p>
-                </div>
-                <div class="card" data-service="software-development">
-                    <div class="card-icon text-gradient"><i class="fas fa-code" aria-hidden="true"></i></div>
-                    <h3>Software Dev</h3>
-                    <p>Custom software development tailored to your workflows. We build web apps, mobile apps, and enterprise systems.</p>
-                </div>
-                <div class="card" data-service="system-maintenance">
-                    <div class="card-icon text-gradient"><i class="fas fa-tools" aria-hidden="true"></i></div>
-                    <h3>System Maintenance</h3>
-                    <p>Proactive maintenance for computers and servers to prevent downtime and ensure optimal performance.</p>
-                </div>
-                <div class="card" data-service="it-consulting">
-                    <div class="card-icon text-gradient"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
-                    <h3>IT Consulting</h3>
-                    <p>Strategic technology consulting. We help you align your IT investments with your long-term business goals.</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
+
+    <!-- Dynamic Service Data for JS -->
+    <script id="services-data" type="application/json">
+    {
+        {% for s in services %}
+        "{{ s.slug }}": {
+            "title": "{{ s.title|escapejs }}",
+            "icon": "{{ s.icon_class|escapejs }}",
+            "tagline": "{{ s.tagline|escapejs }}",
+            "offer": [
+                {% for item in s.offerings.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
+            ],
+            "why": "{{ s.why_it_matters|escapejs }}",
+            "who": [
+                {% for item in s.target_audience.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
+            ]
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    }
+    </script>
 
 
 
@@ -233,7 +236,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="{% url 'contact' %}" class="btn btn-primary w-100 mb-1">Get This Service</a>
+                <a href="{% url 'book_consultation' %}" class="btn btn-primary w-100 mb-1">Book This Service</a>
                 <a href="{% url 'contact' %}" class="btn btn-outline w-100">Talk to an Expert</a>
             </div>
         </div>

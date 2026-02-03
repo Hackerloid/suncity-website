@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ post.title }}">
+    <title>{{ post.title }} - SUNCITY TECHNOLOGY</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Suncity Logo">
+                <span>SUNCITY TECHNOLOGY</span>
+            </div>
+            <nav aria-label="Main Navigation">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'contact' %}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article class="section" aria-label="Blog Post Detail">
+        <div class="container">
+            <div class="max-w-900 mx-auto">
+                <a href="{% url 'blog_list' %}" class="btn btn-outline mb-4"><i class="fas fa-arrow-left mr-1"></i> Back to Blog</a>
+                
+                <header class="mb-4">
+                    <h1 class="fs-1 mb-2">{{ post.title }}</h1>
+                    <div class="flex gap-2 text-muted fs-sm">
+                        <span><i class="fas fa-calendar-alt mr-1"></i> {{ post.created_at|date:"F d, Y" }}</span>
+                        <span><i class="fas fa-user mr-1"></i> By {{ post.author.get_full_name|default:post.author.username }}</span>
+                    </div>
+                </header>
+
+                {% if post.image %}
+                <div class="rounded-lg overflow-hidden mb-4 shadow-md">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full">
+                </div>
+                {% endif %}
+
+                <div class="card p-5 fs-lg leading-relaxed">
+                    {{ post.content|linebreaks }}
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">SUNCITY</span>
+                    </div>
+                    <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="{% url 'services' %}">Cybersecurity</a></li>
+                        <li><a href="{% url 'services' %}">Networking</a></li>
+                        <li><a href="{% url 'services' %}">Software Dev</a></li>
+                        <li><a href="{% url 'services' %}">IT Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
