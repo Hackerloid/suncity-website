@@ -1,180 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Learn about SUNCITY TECHNOLOGY, a leader in innovative and secure IT solutions. Discover our mission, vision, expertise, and why we stand out." />
-    <meta name="keywords" content="SUNCITY TECHNOLOGY, IT Solutions, Cybersecurity, Networking, Software Development, IT Support" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about SUNCITY TECHNOLOGY, a leader in innovative and secure IT solutions. Discover our mission, vision, expertise, and why we stand out.">
     <title>About Us - SUNCITY TECHNOLOGY</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            background-color: #1a1a2e;
-        }
-
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        header .logo img {
-            height: 50px;
-            width: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        header .logo span {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ff9800;
-        }
-
-        header nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #ff9800;
-        }
-
-        .page {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: none;
-            color: #fff;
-        }
-
-        .intro, .mission, .vision, .expertise, .why-us {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #222;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .intro h2, .mission h2, .vision h2, .expertise h2, .why-us h2 {
-            text-align: center;
-            margin-bottom: 1rem;
-            color: #ff9800;
-        }
-
-        .expertise ul, .why-us ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .expertise ul li, .why-us ul li {
-            background: #333;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #333;
-            color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        <img src="images/logo.png" alt="SUNCITY TECHNOLOGY Logo">
-        <span>SUNCITY TECHNOLOGY</span>
-    </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Suncity Logo">
+                <span>SUNCITY TECHNOLOGY</span>
+            </div>
+            <nav aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about.html" aria-current="page">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-<section class="page">
-    <h1>About SUNCITY TECHNOLOGY</h1>
-    <p>
-        SUNCITY TECHNOLOGY provides innovative and secure IT solutions,
-        specializing in cybersecurity, networking, software development,
-        and technical support for modern businesses.
-    </p>
-</section>
+    <!-- Hero Section -->
+    <section class="hero min-h-60" aria-label="About Hero">
+        <div class="container text-center">
+            <h1 class="fs-1 mb-2">About <span class="text-gradient">SUNCITY TECHNOLOGY</span></h1>
+            <p class="max-w-800 mx-auto fs-lg text-muted">
+                We provide innovative and secure IT solutions, specializing in cybersecurity, networking, software development,
+                and technical support for modern businesses.
+            </p>
+        </div>
+    </section>
 
-<section class="intro">
-    <h2>Who We Are</h2>
-    <p>
-        SUNCITY TECHNOLOGY is a modern technology solutions company dedicated to delivering secure, innovative, and reliable digital services. We help businesses and individuals build strong technological systems that improve efficiency, security, and growth in today’s digital world.
-    </p>
-</section>
+    <!-- Intro Card -->
+    <section class="section pt-0" aria-label="Introduction">
+        <div class="container">
+            <div class="card p-5">
+                <div class="text-center mb-2">
+                    <h2 class="text-gradient">Who We Are</h2>
+                </div>
+                <p class="text-center max-w-900 mx-auto fs-lg">
+                    SUNCITY TECHNOLOGY is a modern technology solutions company dedicated to delivering secure, innovative, and reliable digital services. We help businesses and individuals build strong technological systems that improve efficiency, security, and growth in today’s digital world.
+                </p>
+            </div>
+        </div>
+    </section>
 
-<section class="mission">
-    <h2>Our Mission</h2>
-    <p>
-        To empower businesses with intelligent, secure, and efficient technology solutions that drive productivity, protect digital assets, and support long-term growth.
-    </p>
-</section>
+    <!-- Mission & Vision -->
+    <section class="section" aria-label="Mission and Vision">
+        <div class="container benefits-grid">
+            <div class="card text-center">
+                <div class="card-icon text-gradient"><i class="fas fa-bullseye" aria-hidden="true"></i></div>
+                <h3>Our Mission</h3>
+                <p>To empower businesses with intelligent, secure, and efficient technology solutions that drive productivity, protect digital assets, and support long-term growth.</p>
+            </div>
+            <div class="card text-center">
+                <div class="card-icon text-gradient"><i class="fas fa-eye" aria-hidden="true"></i></div>
+                <h3>Our Vision</h3>
+                <p>To become a trusted leader in technology services, recognized for innovation, cybersecurity excellence, and transformative digital solutions.</p>
+            </div>
+        </div>
+    </section>
 
-<section class="vision">
-    <h2>Our Vision</h2>
-    <p>
-        To become a trusted leader in technology services, recognized for innovation, cybersecurity excellence, and transformative digital solutions.
-    </p>
-</section>
+    <!-- Expertise -->
+    <section class="section" aria-label="Our Expertise">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="text-gradient">CAPABILITIES</h3>
+                <h2>Our Expertise</h2>
+            </div>
+            <div class="grid-cards">
+                <div class="card">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>IT Solutions</h4>
+                            <p class="fs-sm text-muted">Technical support &amp; custom solutions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>Cybersecurity</h4>
+                            <p class="fs-sm text-muted">Advanced protection and audits.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-wifi" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>Networking</h4>
+                            <p class="fs-sm text-muted">Infrastructure design &amp; seamless connectivity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-terminal" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>Development</h4>
+                            <p class="fs-sm text-muted">Software &amp; application development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>Maintenance</h4>
+                            <p class="fs-sm text-muted">Computer systems repair &amp; upkeep.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>Consulting</h4>
+                            <p class="fs-sm text-muted">System optimization &amp; IT strategy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="expertise">
-    <h2>Our Expertise</h2>
-    <ul>
-        <li>💻 IT Support & Technical Solutions</li>
-        <li>🔐 Cybersecurity Services</li>
-        <li>🌐 Network Design & Infrastructure</li>
-        <li>📱 Software & Application Development</li>
-        <li>🛠️ Computer Systems Maintenance & Repairs</li>
-        <li>📊 IT Consulting and System Optimization</li>
-    </ul>
-</section>
+    <!-- Why Choose Us -->
+    <section class="section" aria-label="Why Choose Us">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-content text-center">
+                    <h2 class="mb-2">Why Choose Us?</h2>
+                    <p class="max-w-800 mx-auto mb-4 text-muted">
+                        We combine technical expertise with a security-first mindset. Our approach focuses on delivering modern solutions that are not only efficient but also reliable and protected against digital threats.
+                    </p>
+                    <div class="logos gap-2 opacity-100">
+                         <span class="btn-outline badge-pill">Professional Expertise</span>
+                         <span class="btn-outline badge-pill">Security-Focused</span>
+                         <span class="btn-outline badge-pill">Reliable Support</span>
+                         <span class="btn-outline badge-pill">Modern Tech</span>
+                    </div>
+                    <div style="margin-top: 3rem;">
+                        <a href="contact.html" class="btn btn-primary">Work With Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="why-us">
-    <h2>Why Choose Us</h2>
-    <p>
-        We combine technical expertise with a security-first mindset. Our approach focuses on delivering modern solutions that are not only efficient but also reliable and protected against digital threats.
-    </p>
-    <ul>
-        <li>✔ Professional Expertise</li>
-        <li>✔ Security-Focused Solutions</li>
-        <li>✔ Reliable Support</li>
-        <li>✔ Modern Technology Tools</li>
-        <li>✔ Client-Centered Approach</li>
-    </ul>
-</section>
-
-<footer>
-    <p>© 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="Logo" style="height: 30px;">
+                        <span style="font-weight: 700; color: #fff; margin-left: 10px;">SUNCITY</span>
+                    </div>
+                    <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Cybersecurity</a></li>
+                        <li><a href="#">Networking</a></li>
+                        <li><a href="#">Software Dev</a></li>
+                        <li><a href="#">IT Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>

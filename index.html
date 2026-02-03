@@ -1,227 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <meta name="description" content="Welcome to SUNCITY TECHNOLOGY. We provide innovative and secure IT solutions for modern businesses." >
-    <meta name="keywords" content="SUNCITY TECHNOLOGY, IT Solutions, Cybersecurity, Networking, Software Development" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SUNCITY TECHNOLOGY - Smart, Secure & Reliable Technology Solutions. Cybersecurity, Networking, and Software Development.">
     <title>SUNCITY TECHNOLOGY</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            background-color: #0d1b2a;
-        }
-
-        header {
-            background: #0d1b2a;
-            color: #fff;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        header .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        header .logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        header nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #ff8c00;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: url('images/home.png') no-repeat center center/cover;
-            color: #fff;
-            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-        }
-
-        .buttons .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .buttons .btn-primary {
-            background-color: #ff8c00;
-            color: #0d1b2a;
-        }
-
-        .buttons .btn-primary:hover {
-            background-color: #e67e00;
-        }
-
-        .buttons .btn-outline {
-            background-color: transparent;
-            color: #ff8c00;
-            border: 2px solid #ff8c00;
-        }
-
-        .buttons .btn-outline:hover {
-            background-color: #ff8c00;
-            color: #0d1b2a;
-        }
-
-        .services-preview {
-            padding: 6rem 2rem;
-            background: #0d1b2a;
-            color: #fff;
-        }
-
-        .services-preview h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: #ff8c00;
-        }
-
-        .services-preview .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .services-preview .service-card {
-            background: #1b263b;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .services-preview .service-card h3 {
-            margin-bottom: 1rem;
-            color: #ff8c00;
-        }
-
-        .cta-section {
-            padding: 6rem 2rem;
-            background: #1b263b;
-            color: #fff;
-            text-align: center;
-        }
-
-        .cta-section a {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.75rem 1.5rem;
-            background: #ff8c00;
-            color: #0d1b2a;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .cta-section a:hover {
-            background-color: #e67e00;
-        }
-
-        footer {
-            background: #0d1b2a;
-            color: #fff;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer p {
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        <img src="images/logo.png" alt="SUNCITY TECHNOLOGY Logo">
-        <span>SUNCITY TECHNOLOGY</span>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Suncity Logo">
+                <span>SUNCITY TECHNOLOGY</span>
+            </div>
+            <nav aria-label="Main Navigation">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hero Section">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Smart, Secure & Reliable <span class="text-gradient">Technology Solutions</span></h1>
+                <p>We provide advanced cybersecurity, robust networking, and custom software solutions to power and protect modern businesses.</p>
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                    <a href="services.html" class="btn btn-outline">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/dashboard_mockup.png" alt="Cybersecurity Dashboard Interface">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By -->
+    <div class="trusted-by">
+        <div class="container">
+            <p>Trusted by innovative companies</p>
+            <div class="logos">
+                <span>TECHCORP</span>
+                <span>SECURENET</span>
+                <span>DATAGUARD</span>
+                <span>FUTURESYSTEMS</span>
+                <span>CLOUDLINK</span>
+            </div>
+        </div>
     </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-</header>
 
-<section class="hero">
-    <h1>Powering Innovation. Securing the Future.</h1>
-    <p>Smart, secure and reliable IT solutions for modern businesses.</p>
-    <div class="buttons">
-        <a href="contact.html" class="btn btn-primary">Contact Us</a>
-        <a href="services.html" class="btn btn-outline">Our Services</a>
+    <!-- Feature Cards -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="text-gradient">WHAT WE DO</h3>
+                <h2>Comprehensive IT Solutions</h2>
+            </div>
+            <div class="grid-cards">
+                <div class="card" data-service="cybersecurity">
+                    <div class="card-icon text-gradient"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+                    <h3>Cybersecurity</h3>
+                    <p>Advanced threat protection, firewall management, and security audits to keep your data safe.</p>
+                </div>
+                <div class="card" data-service="networking">
+                    <div class="card-icon text-gradient"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
+                    <h3>Networking</h3>
+                    <p>Scalable and secure network infrastructure design, implementation, and maintenance.</p>
+                </div>
+                <div class="card" data-service="it-support">
+                    <div class="card-icon text-gradient"><i class="fas fa-headset" aria-hidden="true"></i></div>
+                    <h3>IT Support</h3>
+                    <p>24/7 technical support and rapid response to ensure your business operations never stop.</p>
+                </div>
+                <div class="card" data-service="software-development">
+                    <div class="card-icon text-gradient"><i class="fas fa-code" aria-hidden="true"></i></div>
+                    <h3>Software Dev</h3>
+                    <p>Custom business software and web applications tailored to your specific operational needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section bg-glass">
+        <div class="container benefits-grid">
+            <div class="benefits-text">
+                <h3 class="text-gradient">WHY CHOOSE US</h3>
+                <h2>We Build Systems That Scale</h2>
+                <p class="mb-2 text-muted">Partner with a team that understands the intersection of performance and security.</p>
+
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-check" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>Proactive Security</h4>
+                            <p class="fs-sm text-muted">We prevent threats before they happen with AI-driven monitoring.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-tachometer-alt" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>High Performance</h4>
+                            <p class="fs-sm text-muted">Optimized infrastructure for maximum speed and reliability.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                        <div>
+                            <h4>Dedicated Expert Team</h4>
+                            <p class="fs-sm text-muted">Certified professionals ready to assist you 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-image">
+                 <div class="img-filter-overlay">
+                    <img src="images/dashboard_mockup.png" alt="Analytics" class="img-hue-rotate">
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="section services">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="text-gradient">OUR EXPERTISE</h3>
+                <h2>Specialized Services</h2>
+            </div>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3>Cloud Solutions</h3>
+                    <p>Secure cloud migration and management services for AWS and Azure environments.</p>
+                </div>
+                <div class="card">
+                    <h3>Data Recovery</h3>
+                    <p>Robust backup solutions and disaster recovery planning to protect critical business data.</p>
+                </div>
+                <div class="card">
+                    <h3>System Integration</h3>
+                    <p>Seamlessly connect your various software and hardware systems for unified operations.</p>
+                </div>
+                <div class="card">
+                    <h3>Consulting</h3>
+                    <p>Strategic IT consulting to align technology with your long-term business goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section">
+        <div class="container text-center">
+            <h3 class="text-gradient">HOW WE WORK</h3>
+            <h2>Our Process</h2> 
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h4>Consult</h4>
+                    <p class="fs-sm text-muted">We analyze your needs &amp; current infrastructure.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h4>Strategy</h4>
+                    <p class="fs-sm text-muted">We design a custom roadmap &amp; solution.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h4>Implement</h4>
+                    <p class="fs-sm text-muted">We deploy systems with minimal disruption.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h4>Support</h4>
+                    <p class="fs-sm text-muted">We provide ongoing monitoring &amp; maintenance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-box">
+                <div class="cta-content">
+                    <h2>Ready to Secure Your Future?</h2>
+                    <p class="mb-2 max-w-600 mx-auto text-muted">Transform your business with SUNCITY TECHNOLOGY's advanced IT solutions today.</p>
+                    <a href="contact.html" class="btn btn-primary">Start Your Transformation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="Logo" style="height: 30px;"> 
+                        <span style="font-weight: 700; color: #fff; margin-left: 10px;">SUNCITY</span>
+                    </div>
+                    <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Cybersecurity</a></li>
+                        <li><a href="#">Networking</a></li>
+                        <li><a href="#">Software Dev</a></li>
+                        <li><a href="#">IT Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Detail Modal -->
+    <div id="service-modal" class="modal" aria-hidden="true">
+        <div class="modal-overlay" tabindex="-1" data-close="true"></div>
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button type="button" class="modal-close" aria-label="Close modal" data-close="true">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <div class="modal-icon text-gradient">
+                    <i class="fas fa-cube" id="modal-icon"></i>
+                </div>
+                <h2 id="modal-title">Service Name</h2>
+                <p id="modal-tagline" class="text-muted">Service tagline goes here.</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3 class="text-gradient">What We Offer</h3>
+                    <ul id="modal-offer-list" class="feature-list">
+                        <!-- List items injected via JS -->
+                    </ul>
+                </div>
+                
+                <div class="modal-grid">
+                    <div class="modal-section">
+                        <h3 class="text-gradient">Why It Matters</h3>
+                        <p id="modal-why" class="text-sm text-muted">Explanation text.</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3 class="text-gradient">Who Needs This</h3>
+                        <ul id="modal-who-list" class="check-list">
+                            <!-- List items injected via JS -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="contact.html" class="btn btn-primary w-100 mb-1">Get This Service</a>
+                <a href="contact.html" class="btn btn-outline w-100">Talk to an Expert</a>
+            </div>
+        </div>
     </div>
-</section>
 
-<section class="services-preview">
-    <h2>What We Do</h2>
-    <div class="grid">
-        <div class="service-card">
-            <h3>IT Support</h3>
-            <p>Reliable IT support to keep your business running smoothly.</p>
-        </div>
-        <div class="service-card">
-            <h3>Cybersecurity</h3>
-            <p>Protect your digital assets with advanced security solutions.</p>
-        </div>
-        <div class="service-card">
-            <h3>Networking</h3>
-            <p>Design and implement robust network infrastructures.</p>
-        </div>
-        <div class="service-card">
-            <h3>Software Development</h3>
-            <p>Custom software solutions tailored to your needs.</p>
-        </div>
-        <div class="service-card">
-            <h3>Web Development</h3>
-            <p>Create modern, responsive, and user-friendly websites.</p>
-        </div>
-    </div>
-</section>
-
-<section class="cta-section">
-    <h2>Ready to Transform Your Business?</h2>
-    <p>Let SUNCITY TECHNOLOGY help you achieve your goals with innovative and secure IT solutions.</p>
-    <a href="contact.html">Get Started</a>
-</section>
-
-<footer>
-    <p>© 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
-    <p>Follow us on <a href="#">LinkedIn</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a></p>
-</footer>
-
+    <script src="js/main.js"></script>
 </body>
 </html>
