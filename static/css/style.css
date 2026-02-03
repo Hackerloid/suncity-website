@@ -659,13 +659,14 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 10, 20, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 10, 20, 0.98);
+    backdrop-filter: blur(15px);
     z-index: 1050;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 8rem 2rem 2rem;
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
@@ -679,18 +680,25 @@ footer {
 .mobile-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    text-align: center;
+    gap: 1.5rem;
+    text-align: left;
+    width: 100%;
 }
 
 .mobile-nav-links a {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #fff;
+    font-family: 'Outfit', sans-serif;
+    border-left: 3px solid transparent;
+    padding-left: 1rem;
+    transition: var(--transition);
 }
 
 .mobile-nav-links a:hover {
     color: var(--primary);
+    border-left-color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Service Modal Styles */
@@ -1030,7 +1038,13 @@ footer {
     }
     
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+        margin-bottom: 2rem;
     }
     
     .process-steps {
