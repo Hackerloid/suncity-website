@@ -68,4 +68,39 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // --- Mobile Menu Logic ---
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navOverlay = document.getElementById('mobile-nav-overlay');
+    const body = document.body;
+
+    if (menuToggle && navOverlay) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle State
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navOverlay.classList.toggle('active');
+            
+            // Toggle Icon
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.className = isExpanded ? 'fas fa-bars' : 'fas fa-times';
+            }
+            
+            // Prevent Scroll when open
+            body.style.overflow = isExpanded ? '' : 'hidden';
+        });
+
+        // Close when clicking a link
+        navOverlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.setAttribute('aria-expanded', 'false');
+                navOverlay.classList.remove('active');
+                body.style.overflow = '';
+                const icon = menuToggle.querySelector('i');
+                if (icon) icon.className = 'fas fa-bars';
+            });
+        });
+    }
 });

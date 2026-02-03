@@ -1,41 +1,10 @@
+{% extends 'website/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the services offered by SUNCITY TECHNOLOGY, including cybersecurity, IT support, networking, and more.">
-    <title>Our Services - SUNCITY TECHNOLOGY</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
 
+{% block title %}Our Services - SUNCITY TECHNOLOGY{% endblock %}
+{% block meta_description %}Explore the services offered by SUNCITY TECHNOLOGY, including cybersecurity, IT support, networking, and more.{% endblock %}
 
-
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="{% static 'images/logo.png' %}" alt="Suncity Logo">
-                <span>SUNCITY TECHNOLOGY</span>
-            </div>
-            <nav aria-label="Main Navigation">
-                <a href="{% url 'index' %}">Home</a>
-                <a href="{% url 'services' %}" aria-current="page">Services</a>
-                <a href="{% url 'about' %}">About</a>
-                <a href="{% url 'blog_list' %}">Blog</a>
-                <a href="{% url 'contact' %}">Contact</a>
-                <a href="{% url 'book_consultation' %}" class="btn btn-primary" style="padding: 0.5rem 1.5rem; margin-left: 1rem;">Book Now</a>
-            </nav>
-        </div>
-    </header>
-
-
-
-
-
+{% block content %}
     <!-- Hero Section -->
     <section class="hero min-h-60" aria-label="Services Hero">
         <div class="container text-center">
@@ -45,10 +14,6 @@
             </p>
         </div>
     </section>
-
-
-
-
 
     <!-- Services Grid -->
     <section class="section pt-0" aria-label="Service List">
@@ -68,30 +33,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Dynamic Service Data for JS -->
-    <script id="services-data" type="application/json">
-    {
-        {% for s in services %}
-        "{{ s.slug }}": {
-            "title": "{{ s.title|escapejs }}",
-            "icon": "{{ s.icon_class|escapejs }}",
-            "tagline": "{{ s.tagline|escapejs }}",
-            "offer": [
-                {% for item in s.offerings.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
-            ],
-            "why": "{{ s.why_it_matters|escapejs }}",
-            "who": [
-                {% for item in s.target_audience.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
-            ]
-        }{% if not forloop.last %},{% endif %}
-        {% endfor %}
-    }
-    </script>
-
-
-
-
 
     <!-- Value Proposition -->
     <section class="section bg-glass" aria-label="Value Proposition">
@@ -120,10 +61,6 @@
         </div>
     </section>
 
-
-
-
-
     <!-- CTA Section -->
     <section class="section">
         <div class="container">
@@ -138,60 +75,28 @@
             </div>
         </div>
     </section>
+{% endblock %}
 
-
-
-
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-img">
-                        <span class="footer-logo-text">SUNCITY</span>
-                    </div>
-                    <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Cybersecurity</a></li>
-                        <li><a href="#">Networking</a></li>
-                        <li><a href="#">Software Dev</a></li>
-                        <li><a href="#">IT Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-
-
-
-
+{% block extra_body %}
+    <!-- Dynamic Service Data for JS -->
+    <script id="services-data" type="application/json">
+    {
+        {% for s in services %}
+        "{{ s.slug }}": {
+            "title": "{{ s.title|escapejs }}",
+            "icon": "{{ s.icon_class|escapejs }}",
+            "tagline": "{{ s.tagline|escapejs }}",
+            "offer": [
+                {% for item in s.offerings.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
+            ],
+            "why": "{{ s.why_it_matters|escapejs }}",
+            "who": [
+                {% for item in s.target_audience.splitlines %}"{{ item|escapejs }}"{% if not forloop.last %},{% endif %}{% endfor %}
+            ]
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    }
+    </script>
 
     <!-- Service Detail Modal -->
     <div id="service-modal" class="modal">
@@ -211,12 +116,6 @@
                 <div class="modal-section">
                     <h3 class="text-gradient">What We Offer</h3>
                     <ul id="modal-offer-list" class="feature-list">
-
-
-
-
-
-                        <!-- List items injected via JS -->
                     </ul>
                 </div>
                 <div class="modal-grid">
@@ -227,10 +126,6 @@
                     <div class="modal-section">
                         <h3 class="text-gradient">Who Needs This</h3>
                         <ul id="modal-who-list" class="check-list">
-
-
-
-                            <!-- List items injected via JS -->
                         </ul>
                     </div>
                 </div>
@@ -241,7 +136,4 @@
             </div>
         </div>
     </div>
-
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}

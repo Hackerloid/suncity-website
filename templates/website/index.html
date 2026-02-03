@@ -1,38 +1,7 @@
+{% extends 'website/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SUNCITY TECHNOLOGY - Smart, Secure &amp; Reliable Technology Solutions. Cybersecurity, Networking, and Software Development.">
-    <title>SUNCITY TECHNOLOGY</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
 
-
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="{% static 'images/logo.png' %}" alt="Suncity Logo">
-                <span>SUNCITY TECHNOLOGY</span>
-            </div>
-            <nav aria-label="Main Navigation">
-                <a href="{% url 'index' %}">Home</a>
-                <a href="{% url 'services' %}">Services</a>
-                <a href="{% url 'about' %}">About</a>
-                <a href="{% url 'blog_list' %}">Blog</a>
-                <a href="{% url 'contact' %}">Contact</a>
-                <a href="{% url 'book_consultation' %}" class="btn btn-primary" style="padding: 0.5rem 1.5rem; margin-left: 1rem;">Book Now</a>
-            </nav>
-        </div>
-    </header>
-
-
-
+{% block content %}
     <!-- Hero Section -->
     <section class="hero" aria-label="Hero Section">
         <div class="container hero-content">
@@ -50,8 +19,6 @@
         </div>
     </section>
 
-
-
     <!-- Trusted By -->
     <div class="trusted-by">
         <div class="container">
@@ -65,10 +32,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <!-- Feature Cards -->
     <section class="section">
@@ -90,9 +53,6 @@
             </div>
         </div>
     </section>
-
-
-
 
     <!-- Benefits Section -->
     <section class="section bg-glass">
@@ -134,9 +94,6 @@
         </div>
     </section>
 
-
-
-
     <!-- Services Grid -->
     <section class="section services">
         <div class="container">
@@ -154,8 +111,6 @@
             </div>
         </div>
     </section>
-
-
 
     <!-- Process Section -->
     <section class="section">
@@ -186,8 +141,6 @@
             </div>
         </div>
     </section>
-
-
 
     <!-- Latest Blog Posts -->
     {% if latest_posts %}
@@ -234,58 +187,10 @@
             </div>
         </div>
     </section>
+{% endblock %}
 
-
-
-    <!-- Footer -->
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-img">                        <span class="footer-logo-text">SUNCITY</span>
-                    </div>
-                    <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="{% url 'about' %}">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="{% url 'blog_list' %}">Blog</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Cybersecurity</a></li>
-                        <li><a href="#">Networking</a></li>
-                        <li><a href="#">Software Dev</a></li>
-                        <li><a href="#">IT Support</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+{% block extra_body %}
     <!-- Service Detail Modal -->
-
-
-
     <div id="service-modal" class="modal">
         <div class="modal-overlay" tabindex="-1" data-close="true"></div>
         <div class="modal-content" role="dialog" aria-modal="true">
@@ -303,11 +208,6 @@
                 <div class="modal-section">
                     <h3 class="text-gradient">What We Offer</h3>
                     <ul id="modal-offer-list" class="feature-list">
-
-
-                        <!-- List items injected via JS -->
-
-
                     </ul>
                 </div>
                 <div class="modal-grid">
@@ -318,12 +218,6 @@
                     <div class="modal-section">
                         <h3 class="text-gradient">Who Needs This</h3>
                         <ul id="modal-who-list" class="check-list">
-
-
-
-                            <!-- List items injected via JS -->
-
-
                         </ul>
                     </div>
                 </div>
@@ -354,7 +248,4 @@
         {% endfor %}
     }
     </script>
-
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+{% endblock %}
