@@ -1,6 +1,11 @@
 from django.contrib import admin
 from .models import ContactSubmission, BlogPost, Booking, Service
 
+# Admin Branding Customization
+admin.site.site_header = "SUNCITY TECHNOLOGY Administration"
+admin.site.site_title = "Suncity Admin Portal"
+admin.site.index_title = "Welcome to Suncity Management Dashboard"
+
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('title', 'order', 'is_active')
