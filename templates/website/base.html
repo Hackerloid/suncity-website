@@ -21,9 +21,21 @@
             </div>
             
             <!-- Mobile Menu Toggle -->
-            <button class="menu-toggle" aria-label="Toggle Navigation" aria-expanded="false">
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Navigation" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
+
+            <!-- Mobile Nav Overlay -->
+            <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+                <div class="mobile-nav-links">
+                    <a href="{% url 'index' %}">Home</a>
+                    <a href="{% url 'services' %}">Services</a>
+                    <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'blog_list' %}">Blog</a>
+                    <a href="{% url 'contact' %}">Contact</a>
+                    <a href="{% url 'book_consultation' %}" class="btn btn-primary">Book Now</a>
+                </div>
+            </div>
 
             <nav aria-label="Main Navigation">
                 <a href="{% url 'index' %}">Home</a>
