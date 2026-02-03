@@ -1,47 +1,54 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SUNCITY TECHNOLOGY - Smart, Secure & Reliable Technology Solutions. Cybersecurity, Networking, and Software Development.">
+    <meta name="description" content="SUNCITY TECHNOLOGY - Smart, Secure &amp; Reliable Technology Solutions. Cybersecurity, Networking, and Software Development.">
     <title>SUNCITY TECHNOLOGY</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+
 
     <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="Suncity Logo">
+                <img src="{% static 'images/logo.png' %}" alt="Suncity Logo">
                 <span>SUNCITY TECHNOLOGY</span>
             </div>
             <nav aria-label="Main Navigation">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'about' %}">About</a>
+                <a href="{% url 'contact' %}">Contact</a>
             </nav>
         </div>
     </header>
+
+
 
     <!-- Hero Section -->
     <section class="hero" aria-label="Hero Section">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Smart, Secure & Reliable <span class="text-gradient">Technology Solutions</span></h1>
+                <h1>Smart, Secure &amp; Reliable <span class="text-gradient">Technology Solutions</span></h1>
                 <p>We provide advanced cybersecurity, robust networking, and custom software solutions to power and protect modern businesses.</p>
                 <div class="hero-buttons">
-                    <a href="contact.html" class="btn btn-primary">Get Started</a>
-                    <a href="services.html" class="btn btn-outline">Our Services</a>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Get Started</a>
+                    <a href="{% url 'services' %}" class="btn btn-outline">Our Services</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/dashboard_mockup.png" alt="Cybersecurity Dashboard Interface">
+                <img src="{% static 'images/dashboard_mockup.png' %}" alt="Cybersecurity Dashboard Interface">
             </div>
         </div>
     </section>
+
+
 
     <!-- Trusted By -->
     <div class="trusted-by">
@@ -56,6 +63,10 @@
             </div>
         </div>
     </div>
+
+
+
+
 
     <!-- Feature Cards -->
     <section class="section">
@@ -88,6 +99,9 @@
             </div>
         </div>
     </section>
+
+
+
 
     <!-- Benefits Section -->
     <section class="section bg-glass">
@@ -123,11 +137,14 @@
             </div>
             <div class="benefits-image">
                  <div class="img-filter-overlay">
-                    <img src="images/dashboard_mockup.png" alt="Analytics" class="img-hue-rotate">
+                    <img src="{% static 'images/dashboard_mockup.png' %}" alt="Analytics" class="img-hue-rotate">
                  </div>
             </div>
         </div>
     </section>
+
+
+
 
     <!-- Services Grid -->
     <section class="section services">
@@ -137,19 +154,19 @@
                 <h2>Specialized Services</h2>
             </div>
             <div class="grid-cards">
-                <div class="card">
+                <div class="card" data-service="cloud-solutions">
                     <h3>Cloud Solutions</h3>
                     <p>Secure cloud migration and management services for AWS and Azure environments.</p>
                 </div>
-                <div class="card">
+                <div class="card" data-service="data-recovery">
                     <h3>Data Recovery</h3>
                     <p>Robust backup solutions and disaster recovery planning to protect critical business data.</p>
                 </div>
-                <div class="card">
+                <div class="card" data-service="system-integration">
                     <h3>System Integration</h3>
                     <p>Seamlessly connect your various software and hardware systems for unified operations.</p>
                 </div>
-                <div class="card">
+                <div class="card" data-service="it-consulting">
                     <h3>Consulting</h3>
                     <p>Strategic IT consulting to align technology with your long-term business goals.</p>
                 </div>
@@ -157,11 +174,13 @@
         </div>
     </section>
 
+
+
     <!-- Process Section -->
     <section class="section">
         <div class="container text-center">
             <h3 class="text-gradient">HOW WE WORK</h3>
-            <h2>Our Process</h2> 
+            <h2>Our Process</h2>
             <div class="process-steps">
                 <div class="step">
                     <div class="step-number">01</div>
@@ -187,6 +206,8 @@
         </div>
     </section>
 
+
+
     <!-- CTA Section -->
     <section class="section">
         <div class="container">
@@ -194,20 +215,22 @@
                 <div class="cta-content">
                     <h2>Ready to Secure Your Future?</h2>
                     <p class="mb-2 max-w-600 mx-auto text-muted">Transform your business with SUNCITY TECHNOLOGY's advanced IT solutions today.</p>
-                    <a href="contact.html" class="btn btn-primary">Start Your Transformation</a>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">Start Your Transformation</a>
                 </div>
             </div>
         </div>
     </section>
 
+
+
     <!-- Footer -->
+
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="images/logo.png" alt="Logo" style="height: 30px;"> 
-                        <span style="font-weight: 700; color: #fff; margin-left: 10px;">SUNCITY</span>
+                        <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-img">                        <span class="footer-logo-text">SUNCITY</span>
                     </div>
                     <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
                 </div>
@@ -246,13 +269,15 @@
     </footer>
 
     <!-- Service Detail Modal -->
-    <div id="service-modal" class="modal" aria-hidden="true">
+
+
+
+    <div id="service-modal" class="modal">
         <div class="modal-overlay" tabindex="-1" data-close="true"></div>
         <div class="modal-content" role="dialog" aria-modal="true">
             <button type="button" class="modal-close" aria-label="Close modal" data-close="true">
                 <i class="fas fa-times"></i>
             </button>
-            
             <div class="modal-header">
                 <div class="modal-icon text-gradient">
                     <i class="fas fa-cube" id="modal-icon"></i>
@@ -260,37 +285,42 @@
                 <h2 id="modal-title">Service Name</h2>
                 <p id="modal-tagline" class="text-muted">Service tagline goes here.</p>
             </div>
-            
             <div class="modal-body">
                 <div class="modal-section">
                     <h3 class="text-gradient">What We Offer</h3>
                     <ul id="modal-offer-list" class="feature-list">
+
+
                         <!-- List items injected via JS -->
+
+
                     </ul>
                 </div>
-                
                 <div class="modal-grid">
                     <div class="modal-section">
                         <h3 class="text-gradient">Why It Matters</h3>
                         <p id="modal-why" class="text-sm text-muted">Explanation text.</p>
                     </div>
-                    
                     <div class="modal-section">
                         <h3 class="text-gradient">Who Needs This</h3>
                         <ul id="modal-who-list" class="check-list">
+
+
+
                             <!-- List items injected via JS -->
+
+
                         </ul>
                     </div>
                 </div>
             </div>
-            
             <div class="modal-footer">
-                <a href="contact.html" class="btn btn-primary w-100 mb-1">Get This Service</a>
-                <a href="contact.html" class="btn btn-outline w-100">Talk to an Expert</a>
+                <a href="{% url 'contact' %}" class="btn btn-primary w-100 mb-1">Get This Service</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline w-100">Talk to an Expert</a>
             </div>
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

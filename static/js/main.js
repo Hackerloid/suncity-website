@@ -99,6 +99,101 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Brands',
                 'Organizations'
             ]
+        },
+        'cloud-solutions': {
+            title: 'Cloud Solutions',
+            icon: 'fa-cloud',
+            tagline: 'Secure, scalable cloud infrastructure for your business.',
+            offer: [
+                'Cloud migration (AWS, Azure, GCP)',
+                'Cloud security & configuration',
+                'Hybrid cloud solutions',
+                'SaaS implementation',
+                'Cloud storage setup',
+                'Infrastructure monitoring'
+            ],
+            why: 'The cloud offers unmatched flexibility. We ensure your transition is secure and your performance is optimized.',
+            who: [
+                'Businesses scaling rapidly',
+                'Remote-first companies',
+                'Enterprises reducing hardware costs'
+            ]
+        },
+        'data-recovery': {
+            title: 'Data Recovery',
+            icon: 'fa-database',
+            tagline: 'Protecting and restoring your most valuable assets.',
+            offer: [
+                'Automated backup systems',
+                'Disaster recovery planning',
+                'Hard drive data restoration',
+                'Ransomware recovery support',
+                'Cloud backup solutions',
+                'Off-site data protection'
+            ],
+            why: 'Data loss can be catastrophic. We provide the safety nets and recovery expertise to keep you operational.',
+            who: [
+                'Businesses with critical databases',
+                'Law firms and medical practices',
+                'Finance-heavy organizations'
+            ]
+        },
+        'system-integration': {
+            title: 'System Integration',
+            icon: 'fa-puzzle-piece',
+            tagline: 'Connecting your tools for a seamless workflow.',
+            offer: [
+                'API development & integration',
+                'Software-to-Software connectivity',
+                'Unified communications setup',
+                'Legacy system modernization',
+                'Database synchronization',
+                'Workflow automation'
+            ],
+            why: 'Disconnected systems cause friction. We unify your technology stack to improve efficiency and data accuracy.',
+            who: [
+                'Companies using multiple platforms',
+                'Businesses scaling their operations',
+                'Organizations seeking automation'
+            ]
+        },
+        'it-consulting': {
+            title: 'IT Consulting',
+            icon: 'fa-chart-line',
+            tagline: 'Strategic technology guidance for business growth.',
+            offer: [
+                'IT roadmap development',
+                'Security & infrastructure audits',
+                'Technology budget planning',
+                'Digital transformation strategy',
+                'Vendor selection support',
+                'Compliance & risk management'
+            ],
+            why: 'Technology should be an investment, not just a cost. We help you make smart, strategic IT decisions.',
+            who: [
+                'Businesses undergoing growth',
+                'Startups planning their tech stack',
+                'Enterprises modernizing their systems'
+            ]
+        },
+        'system-maintenance': {
+            title: 'System Maintenance',
+            icon: 'fa-tools',
+            tagline: 'Proactive upkeep for peak performance.',
+            offer: [
+                'Daily system health checks',
+                'Security patches & updates',
+                'Hardware cleaning & maintenance',
+                'Server optimization',
+                'Performance tuning',
+                'Asset management'
+            ],
+            why: 'Regular maintenance prevents expensive failures. We keep your systems running at their absolute best.',
+            who: [
+                'Offices with on-premise hardware',
+                'Retailers with POS systems',
+                'Operations requiring 100% uptime'
+            ]
         }
     };
 

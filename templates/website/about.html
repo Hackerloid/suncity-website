@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,26 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Learn about SUNCITY TECHNOLOGY, a leader in innovative and secure IT solutions. Discover our mission, vision, expertise, and why we stand out.">
     <title>About Us - SUNCITY TECHNOLOGY</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+
 
     <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png" alt="Suncity Logo">
+                <img src="{% static 'images/logo.png' %}" alt="Suncity Logo">
                 <span>SUNCITY TECHNOLOGY</span>
             </div>
             <nav aria-label="Main Navigation">
-                <a href="index.html">Home</a>
-                <a href="services.html">Services</a>
-                <a href="about.html" aria-current="page">About</a>
-                <a href="contact.html">Contact</a>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'services' %}">Services</a>
+                <a href="{% url 'about' %}" aria-current="page">About</a>
+                <a href="{% url 'contact' %}">Contact</a>
             </nav>
         </div>
     </header>
+
+
 
     <!-- Hero Section -->
     <section class="hero min-h-60" aria-label="About Hero">
@@ -36,6 +41,9 @@
             </p>
         </div>
     </section>
+
+
+
 
     <!-- Intro Card -->
     <section class="section pt-0" aria-label="Introduction">
@@ -51,7 +59,10 @@
         </div>
     </section>
 
-    <!-- Mission & Vision -->
+
+
+
+    <!-- Mission &amp; Vision -->
     <section class="section" aria-label="Mission and Vision">
         <div class="container benefits-grid">
             <div class="card text-center">
@@ -66,6 +77,10 @@
             </div>
         </div>
     </section>
+
+
+
+
 
     <!-- Expertise -->
     <section class="section" aria-label="Our Expertise">
@@ -133,6 +148,9 @@
         </div>
     </section>
 
+
+
+
     <!-- Why Choose Us -->
     <section class="section" aria-label="Why Choose Us">
         <div class="container">
@@ -148,13 +166,16 @@
                          <span class="btn-outline badge-pill">Reliable Support</span>
                          <span class="btn-outline badge-pill">Modern Tech</span>
                     </div>
-                    <div style="margin-top: 3rem;">
-                        <a href="contact.html" class="btn btn-primary">Work With Us</a>
+                    <div class="mt-3">
+                        <a href="{% url 'contact' %}" class="btn btn-primary">Work With Us</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
 
     <!-- Footer -->
     <footer>
@@ -162,8 +183,8 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="images/logo.png" alt="Logo" style="height: 30px;">
-                        <span style="font-weight: 700; color: #fff; margin-left: 10px;">SUNCITY</span>
+                        <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">SUNCITY</span>
                     </div>
                     <p>Empowering businesses with secure, scalable, and smart technology solutions.</p>
                 </div>
@@ -176,7 +197,6 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul>
@@ -186,7 +206,6 @@
                         <li><a href="#">IT Support</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h4>Connect</h4>
                     <ul>
@@ -197,7 +216,6 @@
                     </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2026 SUNCITY TECHNOLOGY. All rights reserved.</p>
             </div>
