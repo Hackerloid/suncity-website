@@ -71,36 +71,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Mobile Menu Logic ---
     const menuToggle = document.getElementById('mobile-menu-toggle');
+    const menuClose = document.getElementById('mobile-menu-close');
     const navOverlay = document.getElementById('mobile-nav-overlay');
     const body = document.body;
 
+    function openMenu() {
+        navOverlay.classList.add('active');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        navOverlay.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        body.style.overflow = '';
+    }
+
     if (menuToggle && navOverlay) {
-        menuToggle.addEventListener('click', () => {
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            
-            // Toggle State
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-            navOverlay.classList.toggle('active');
-            
-            // Toggle Icon
-            const icon = menuToggle.querySelector('i');
-            if (icon) {
-                icon.className = isExpanded ? 'fas fa-bars' : 'fas fa-times';
-            }
-            
-            // Prevent Scroll when open
-            body.style.overflow = isExpanded ? '' : 'hidden';
-        });
+        menuToggle.addEventListener('click', openMenu);
+        if (menuClose) menuClose.addEventListener('click', closeMenu);
 
         // Close when clicking a link
         navOverlay.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.setAttribute('aria-expanded', 'false');
-                navOverlay.classList.remove('active');
-                body.style.overflow = '';
-                const icon = menuToggle.querySelector('i');
-                if (icon) icon.className = 'fas fa-bars';
-            });
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close when clicking outside the menu panel (on the overlay)
+        document.addEventListener('click', (e) => {
+            if (navOverlay.classList.contains('active') && 
+                !navOverlay.contains(e.target) && 
+                e.target !== menuToggle && 
+                !menuToggle.contains(e.target)) {
+                closeMenu();
+            }
         });
     }
 });

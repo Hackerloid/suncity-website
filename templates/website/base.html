@@ -25,15 +25,23 @@
                 <i class="fas fa-bars"></i>
             </button>
 
-            <!-- Mobile Nav Overlay -->
+            <!-- Mobile Nav Overlay (Side Panel) -->
             <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+                <div class="mobile-nav-header">
+                    <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close Menu">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
                 <div class="mobile-nav-links">
                     <a href="{% url 'index' %}">Home</a>
-                    <a href="{% url 'services' %}">Services</a>
                     <a href="{% url 'about' %}">About</a>
+                    <a href="{% url 'services' %}">Services</a>
                     <a href="{% url 'blog_list' %}">Blog</a>
                     <a href="{% url 'contact' %}">Contact</a>
-                    <a href="{% url 'book_consultation' %}" class="btn btn-primary">Book Now</a>
+                    
+                    <div class="menu-divider"></div>
+                    
+                    <a href="{% url 'book_consultation' %}" class="btn btn-primary menu-cta">Talk to Us</a>
                 </div>
             </div>
 

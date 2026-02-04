@@ -656,49 +656,85 @@ footer {
 .mobile-nav-overlay {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: -100%; /* Hidden off-screen to the right */
+    width: 80%;
+    max-width: 400px;
     height: 100%;
-    background: rgba(5, 10, 20, 0.98);
-    backdrop-filter: blur(15px);
-    z-index: 1050;
+    background: rgba(5, 10, 20, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 2000;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 8rem 2rem 2rem;
-    opacity: 0;
+    padding: 2rem;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     visibility: hidden;
-    transition: var(--transition);
 }
 
 .mobile-nav-overlay.active {
-    opacity: 1;
+    transform: translateX(-100%); /* Slide in */
     visibility: visible;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 3rem;
+}
+
+.mobile-menu-close {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobile-menu-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
 }
 
 .mobile-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    text-align: left;
+    gap: 2rem;
     width: 100%;
 }
 
 .mobile-nav-links a {
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: #fff;
     font-family: 'Outfit', sans-serif;
-    border-left: 3px solid transparent;
-    padding-left: 1rem;
     transition: var(--transition);
+    display: block;
+    padding: 0.5rem 0;
 }
 
 .mobile-nav-links a:hover {
     color: var(--primary);
-    border-left-color: var(--primary);
-    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(10px);
+}
+
+.menu-divider {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+    margin: 1rem 0;
+}
+
+.menu-cta {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.1rem !important;
 }
 
 /* Service Modal Styles */
