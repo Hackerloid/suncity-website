@@ -12,6 +12,32 @@
 </head>
 <body>
 
+    <!-- Mobile Menu Backdrop -->
+    <div id="menu-backdrop" class="menu-backdrop"></div>
+
+    <!-- Mobile Nav Overlay (Side Panel) -->
+    <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+        <div class="mobile-nav-header">
+            <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close Menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="{% url 'index' %}" class="nav-primary"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'about' %}" class="nav-primary"><i class="fas fa-info-circle"></i> About</a>
+            <a href="{% url 'services' %}" class="nav-primary"><i class="fas fa-tools"></i> Services</a>
+            <a href="{% url 'blog_list' %}" class="nav-secondary"><i class="fas fa-newspaper"></i> Blog</a>
+            <a href="{% url 'contact' %}" class="nav-secondary"><i class="fas fa-phone"></i> Contact</a>
+            
+            <div class="menu-divider"></div>
+            
+            <div class="action-zone">
+                <a href="{% url 'book_consultation' %}" class="btn btn-primary menu-cta">Get a Quote</a>
+                <p class="action-subtext">Talk to an Expert</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -24,29 +50,6 @@
             <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Navigation" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
-
-            <!-- Mobile Nav Overlay (Side Panel) -->
-            <div id="mobile-nav-overlay" class="mobile-nav-overlay">
-                <div class="mobile-nav-header">
-                    <button id="mobile-menu-close" class="mobile-menu-close" aria-label="Close Menu">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <div class="mobile-nav-links">
-                    <a href="{% url 'index' %}" class="nav-primary"><i class="fas fa-home"></i> Home</a>
-                    <a href="{% url 'about' %}" class="nav-primary"><i class="fas fa-info-circle"></i> About</a>
-                    <a href="{% url 'services' %}" class="nav-primary"><i class="fas fa-tools"></i> Services</a>
-                    <a href="{% url 'blog_list' %}" class="nav-secondary"><i class="fas fa-newspaper"></i> Blog</a>
-                    <a href="{% url 'contact' %}" class="nav-secondary"><i class="fas fa-phone"></i> Contact</a>
-                    
-                    <div class="menu-divider"></div>
-                    
-                    <div class="action-zone">
-                        <a href="{% url 'book_consultation' %}" class="btn btn-primary menu-cta">Get a Quote</a>
-                        <p class="action-subtext">Talk to an Expert</p>
-                    </div>
-                </div>
-            </div>
 
             <nav aria-label="Main Navigation">
                 <a href="{% url 'index' %}">Home</a>

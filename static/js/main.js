@@ -73,16 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const menuClose = document.getElementById('mobile-menu-close');
     const navOverlay = document.getElementById('mobile-nav-overlay');
+    const menuBackdrop = document.getElementById('menu-backdrop');
     const body = document.body;
 
     function openMenu() {
         navOverlay.classList.add('active');
+        if (menuBackdrop) menuBackdrop.classList.add('active');
         menuToggle.setAttribute('aria-expanded', 'true');
         body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
         navOverlay.classList.remove('active');
+        if (menuBackdrop) menuBackdrop.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
         body.style.overflow = '';
     }
@@ -90,20 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuToggle && navOverlay) {
         menuToggle.addEventListener('click', openMenu);
         if (menuClose) menuClose.addEventListener('click', closeMenu);
+        if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
 
         // Close when clicking a link
         navOverlay.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', closeMenu);
-        });
-
-        // Close when clicking outside the menu panel (on the overlay)
-        document.addEventListener('click', (e) => {
-            if (navOverlay.classList.contains('active') && 
-                !navOverlay.contains(e.target) && 
-                e.target !== menuToggle && 
-                !menuToggle.contains(e.target)) {
-                closeMenu();
-            }
         });
     }
 });
