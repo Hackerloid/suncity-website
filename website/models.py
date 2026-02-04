@@ -3,10 +3,18 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 class ContactSubmission(models.Model):
+    STATUS_CHOICES = [
+        ('new', 'New'),
+        ('contacted', 'Contacted'),
+        ('in-progress', 'In Progress'),
+        ('closed', 'Closed'),
+    ]
+    
     full_name = models.CharField(max_length=255)
     email = models.EmailField()
     subject = models.CharField(max_length=255)
     message = models.TextField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -38,6 +46,13 @@ class Booking(models.Model):
         ('consulting', 'General Consulting'),
     ]
     
+    WORKFLOW_STATUS_CHOICES = [
+        ('new', 'New'),
+        ('contacted', 'Contacted'),
+        ('in-progress', 'In Progress'),
+        ('closed', 'Closed'),
+    ]
+
     name = models.CharField(max_length=255)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
@@ -50,6 +65,7 @@ class Booking(models.Model):
         ('confirmed', 'Confirmed'),
         ('cancelled', 'Cancelled')
     ])
+    workflow_status = models.CharField(max_length=20, choices=WORKFLOW_STATUS_CHOICES, default='new')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

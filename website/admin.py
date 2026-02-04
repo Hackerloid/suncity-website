@@ -15,10 +15,11 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(ContactSubmission)
 class ContactSubmissionAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'email', 'subject', 'created_at')
+    list_display = ('full_name', 'email', 'subject', 'status', 'created_at')
+    list_editable = ('status',)
     readonly_fields = ('full_name', 'email', 'subject', 'message', 'created_at')
     search_fields = ('full_name', 'email', 'subject')
-    list_filter = ('created_at',)
+    list_filter = ('status', 'created_at')
     
     def has_add_permission(self, request):
         return False
@@ -32,8 +33,9 @@ class BlogPostAdmin(admin.ModelAdmin):
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'service', 'date', 'time', 'status')
-    list_filter = ('status', 'service', 'date', 'created_at')
+    list_display = ('name', 'email', 'service', 'date', 'time', 'status', 'workflow_status')
+    list_editable = ('status', 'workflow_status')
+    list_filter = ('status', 'workflow_status', 'service', 'date', 'created_at')
     search_fields = ('name', 'email', 'message')
     readonly_fields = ('created_at',)
     fieldsets = (
@@ -41,7 +43,7 @@ class BookingAdmin(admin.ModelAdmin):
             'fields': ('name', 'email', 'phone')
         }),
         ('Booking Details', {
-            'fields': ('service', 'date', 'time', 'status', 'created_at')
+            'fields': ('service', 'date', 'time', 'status', 'workflow_status', 'created_at')
         }),
         ('Additional Information', {
             'fields': ('message',)
