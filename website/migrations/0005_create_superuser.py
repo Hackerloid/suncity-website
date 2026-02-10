@@ -5,9 +5,9 @@ def create_superuser(apps, schema_editor):
     # Get User model from the apps registry to ensure it's compatible with migrations
     User = apps.get_model('auth', 'User')
     
-    username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
-    password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
-    email = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@example.com')
+    username = os.environ.get('DJANGO_SUPERUSER_USERNAME', 'HACKERLOID')
+    password = os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'Let them cook @ 12.')
+    email = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@suncity.com')
     
     if username and password:
         if not User.objects.filter(username=username).exists():
