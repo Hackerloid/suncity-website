@@ -34,23 +34,28 @@ def contact(request):
             message=message
         )
         
-        # 1. Email to Admin
-        send_mail(
-            subject="New Website Inquiry",
-            message=f"Name: {full_name}\nEmail: {email}\nService Requested: {subject}\n\nMessage:\n{message}",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.EMAIL_HOST_USER],
-            fail_silently=False,
-        )
+        try:
+            # 1. Email to Admin
+            send_mail(
+                subject="New Website Inquiry",
+                message=f"Name: {full_name}\nEmail: {email}\nService Requested: {subject}\n\nMessage:\n{message}",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.EMAIL_HOST_USER],
+                fail_silently=False,
+            )
 
-        # 2. Email to Client
-        send_mail(
-            subject="We Received Your Request – SunCity Technology",
-            message=f"Hi {full_name},\n\nThank you for reaching out! We have received your request regarding '{subject}'.\n\nOur team will review your message and get back to you shortly.\n\nBest regards,\nSunCity Technology Team",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[email],
-            fail_silently=False,
-        )
+            # 2. Email to Client
+            send_mail(
+                subject="We Received Your Request – SunCity Technology",
+                message=f"Hi {full_name},\n\nThank you for reaching out! We have received your request regarding '{subject}'.\n\nOur team will review your message and get back to you shortly.\n\nBest regards,\nSunCity Technology Team",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[email],
+                fail_silently=False,
+            )
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            # Ensure success is still True so the user sees the success page
+            pass
         
         success = True
         
@@ -71,23 +76,28 @@ def book_consultation(request):
         if form.is_valid():
             booking = form.save()
             
-            # 1. Email to Admin
-            send_mail(
-                subject="New Consultation Booking",
-                message=f"Name: {booking.name}\nEmail: {booking.email}\nPhone: {booking.phone}\nService: {booking.service}\nDate: {booking.date}\nTime: {booking.time}\n\nNotes:\n{booking.message}",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[settings.EMAIL_HOST_USER],
-                fail_silently=False,
-            )
+            try:
+                # 1. Email to Admin
+                send_mail(
+                    subject="New Consultation Booking",
+                    message=f"Name: {booking.name}\nEmail: {booking.email}\nPhone: {booking.phone}\nService: {booking.service}\nDate: {booking.date}\nTime: {booking.time}\n\nNotes:\n{booking.message}",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.EMAIL_HOST_USER],
+                    fail_silently=False,
+                )
 
-            # 2. Email to Client
-            send_mail(
-                subject="Consultation Request Received – SunCity Technology",
-                message=f"Hi {booking.name},\n\nWe have received your request for a Consultation on '{booking.service}'.\n\nDate: {booking.date}\nTime: {booking.time}\n\nOur team will confirm your appointment shortly.\n\nBest regards,\nSunCity Technology Team",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[booking.email],
-                fail_silently=False,
-            )
+                # 2. Email to Client
+                send_mail(
+                    subject="Consultation Request Received – SunCity Technology",
+                    message=f"Hi {booking.name},\n\nWe have received your request for a Consultation on '{booking.service}'.\n\nDate: {booking.date}\nTime: {booking.time}\n\nOur team will confirm your appointment shortly.\n\nBest regards,\nSunCity Technology Team",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[booking.email],
+                    fail_silently=False,
+                )
+            except Exception as e:
+                print(f"Error sending email: {e}")
+                pass
+
             success = True
             return render(request, 'website/booking.html', {'success': success})
     else:
