@@ -30,6 +30,12 @@
                         <a href="{% url 'index' %}" class="btn btn-outline">Back to Home</a>
                     </div>
                     {% else %}
+                    {% if error_message %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <strong class="font-bold">Error!</strong>
+                        <span class="block sm:inline">{{ error_message }}</span>
+                    </div>
+                    {% endif %}
                     <h2 class="mb-4">Schedule Your Session</h2>
                     <form method="POST" class="form-grid">
                         {% csrf_token %}
