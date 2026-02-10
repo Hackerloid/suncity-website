@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import ContactSubmission, BlogPost, Booking, Service
@@ -108,7 +109,19 @@ def book_consultation(request):
                 print(f"Error saving booking: {e}")
                 # Add a non-field error to the form or pass error_message
                 return render(request, 'website/booking.html', {'form': form, 'success': False, 'error_message': "An error occurred while booking. Please try again later."})
-    else:
-        form = BookingForm()
-    
     return render(request, 'website/booking.html', {'form': form, 'success': success})
+
+def test_db(request):
+    try:
+        from .models import ContactSubmission
+        c = ContactSubmission.objects.create(
+            full_name="Diagnostic Test",
+            email="test@suncity.com",
+            subject="Test",
+            message="Testing DB"
+        )
+        c.delete()
+        return HttpResponse("✅ Database Write/Delete: SUCCESS")
+    except Exception as e:
+        import traceback
+        return HttpResponse(f"❌ Database Error: {e}<br><pre>{traceback.format_exc()}</pre>")
