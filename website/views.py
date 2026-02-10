@@ -61,7 +61,7 @@ def contact(request):
             success = True
         except Exception as e:
             print(f"Error saving contact submission: {e}")
-            return render(request, 'website/contact.html', {'success': False, 'error_message': "An error occurred while sending your message. Please try again later."})
+            return render(request, 'website/contact.html', {'success': False, 'error_message': f"Contact Error: {e}"})
         
     return render(request, 'website/contact.html', {'success': success})
 
@@ -107,8 +107,10 @@ def book_consultation(request):
                 return render(request, 'website/booking.html', {'success': success})
             except Exception as e:
                 print(f"Error saving booking: {e}")
-                # Add a non-field error to the form or pass error_message
-                return render(request, 'website/booking.html', {'form': form, 'success': False, 'error_message': "An error occurred while booking. Please try again later."})
+                return render(request, 'website/booking.html', {'form': form, 'success': False, 'error_message': f"Booking Error: {e}"})
+    else:
+        form = BookingForm()
+    
     return render(request, 'website/booking.html', {'form': form, 'success': success})
 
 def test_db(request):
