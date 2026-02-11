@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-82mx3w=10v!w1+t6wpc!f2ve@^ewk13_z0am$(08)_qa#+)n0^')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['suncity-website.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
