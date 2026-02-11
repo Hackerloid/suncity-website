@@ -31,9 +31,8 @@
                     </div>
                     {% else %}
                     {% if error_message %}
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                        <strong class="font-bold">Error!</strong>
-                        <span class="block sm:inline">{{ error_message }}</span>
+                    <div class="alert alert-error">
+                        <strong>Error:</strong> {{ error_message }}
                     </div>
                     {% endif %}
                     <h2 class="mb-4">Schedule Your Session</h2>
@@ -41,36 +40,36 @@
                         {% csrf_token %}
                         <div class="grid-2-col gap-2">
                             <div class="form-group">
-                                <label class="form-label" for="{{ form.name.id_for_label }}">Full Name</label>
+                                <label class="form-label" for="id_name">Full Name</label>
                                 {{ form.name }}
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="{{ form.email.id_for_label }}">Email Address</label>
+                                <label class="form-label" for="id_email">Email Address</label>
                                 {{ form.email }}
                             </div>
                         </div>
                         <div class="grid-2-col gap-2 mt-2">
                             <div class="form-group">
-                                <label class="form-label" for="{{ form.phone.id_for_label }}">Phone Number</label>
+                                <label class="form-label" for="id_phone">Phone Number</label>
                                 {{ form.phone }}
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="{{ form.service.id_for_label }}">Interested Service</label>
+                                <label class="form-label" for="id_service">Interested Service</label>
                                 {{ form.service }}
                             </div>
                         </div>
                         <div class="grid-2-col gap-2 mt-2">
                             <div class="form-group">
-                                <label class="form-label" for="{{ form.date.id_for_label }}">Preferred Date</label>
+                                <label class="form-label" for="id_date">Preferred Date</label>
                                 {{ form.date }}
                             </div>
                             <div class="form-group">
-                                <label class="form-label" for="{{ form.time.id_for_label }}">Preferred Time</label>
+                                <label class="form-label" for="id_time">Preferred Time</label>
                                 {{ form.time }}
                             </div>
                         </div>
                         <div class="form-group mt-2">
-                            <label class="form-label" for="{{ form.message.id_for_label }}">Additional Notes</label>
+                            <label class="form-label" for="id_message">Additional Notes</label>
                             {{ form.message }}
                         </div>
                         <div class="mt-4">

@@ -22,6 +22,7 @@ def services(request):
 
 def contact(request):
     success = False
+    error_message = None
     if request.method == 'POST':
         full_name = request.POST.get('full_name')
         email = request.POST.get('email')
@@ -56,14 +57,15 @@ def contact(request):
                 )
             except Exception as e:
                 print(f"Error sending email: {e}")
+                # Don't fail the form if email fails, just log it
                 pass
             
             success = True
         except Exception as e:
             print(f"Error saving contact submission: {e}")
-            return render(request, 'website/contact.html', {'success': False, 'error_message': f"Contact Error: {e}"})
+            error_message = f"Contact Error: {e}"
         
-    return render(request, 'website/contact.html', {'success': success})
+    return render(request, 'website/contact.html', {'success': success, 'error_message': error_message})
 
 def blog_list(request):
     posts = BlogPost.objects.order_by('-created_at')
@@ -75,6 +77,9 @@ def blog_detail(request, slug):
 
 def book_consultation(request):
     success = False
+    error_message = None
+    form = None
+    
     if request.method == 'POST':
         form = BookingForm(request.POST)
         if form.is_valid():
@@ -101,17 +106,20 @@ def book_consultation(request):
                     )
                 except Exception as e:
                     print(f"Error sending email: {e}")
+                    # Don't fail the form if email fails, just log it
                     pass
 
                 success = True
                 return render(request, 'website/booking.html', {'success': success})
             except Exception as e:
                 print(f"Error saving booking: {e}")
-                return render(request, 'website/booking.html', {'form': form, 'success': False, 'error_message': f"Booking Error: {e}"})
+                error_message = f"Booking Error: {e}"
+        else:
+            error_message = "Please check the form and try again."
     else:
         form = BookingForm()
     
-    return render(request, 'website/booking.html', {'form': form, 'success': success})
+    return render(request, 'website/booking.html', {'form': form, 'success': success, 'error_message': error_message})
 
 def test_db(request):
     try:

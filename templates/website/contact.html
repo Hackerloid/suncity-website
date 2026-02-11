@@ -51,13 +51,12 @@
                     </div>
                     {% else %}
                     {% if error_message %}
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                        <strong class="font-bold">Error!</strong>
-                        <span class="block sm:inline">{{ error_message }}</span>
+                    <div class="alert alert-error">
+                        <strong>Error:</strong> {{ error_message }}
                     </div>
                     {% endif %}
                     <h2 class="mb-2">Send a Message</h2>
-                    <form method="POST" action="{% url 'contact' %}" class="form-grid">
+                    <form method="POST" class="form-grid">
                         {% csrf_token %}
                         <div class="form-group">
                             <label class="form-label" for="full-name">Full Name</label>

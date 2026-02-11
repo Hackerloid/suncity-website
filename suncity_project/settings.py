@@ -140,6 +140,16 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'suncitytechnology7@gmail.co
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'change-me-to-your-app-password')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
+# Security Settings for Production
+if not DEBUG:
+    # Use environment variables for production
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    
+    # Ensure email password is set
+    if not EMAIL_HOST_PASSWORD:
+        raise ValueError("EMAIL_HOST_PASSWORD environment variable must be set in production")
+
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
