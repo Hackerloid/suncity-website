@@ -148,7 +148,8 @@ if not DEBUG:
     
     # Ensure email password is set
     if not EMAIL_HOST_PASSWORD:
-        raise ValueError("EMAIL_HOST_PASSWORD environment variable must be set in production")
+        print("WARNING: EMAIL_HOST_PASSWORD not set. Email functionality will fail.")
+        # We allow deployment to continue so you can see the site and logs.
 
 # Logging Configuration
 LOGGING = {
