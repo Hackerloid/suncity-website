@@ -147,9 +147,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Use custom backend to force IPv4 (fixes Network is unreachable on Render)
 EMAIL_BACKEND = 'website.email_backends.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465  # Switch to SSL
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True  # Required for port 465
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'suncitytechnology7@gmail.com')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'change-me-to-your-app-password')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
