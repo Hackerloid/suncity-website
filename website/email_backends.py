@@ -46,7 +46,4 @@ class EmailBackend(DjangoEmailBackend):
                 raise
             
         return False
-            if not self.fail_silently:
-                raise
-            
-        return False
+
