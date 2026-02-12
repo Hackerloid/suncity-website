@@ -15,30 +15,24 @@ class EmailBackend(DjangoEmailBackend):
             connection_params['context'] = ssl.create_default_context()
             
         try:
-            # This is the key fix: Force IPv4 logic
-            # We don't have a direct way to pass AF_INET to SMTP constructor in Python < 3.3 for some versions,
-            # but usually we can't easily override the socket creation inside smtplib.SMTP 
-            # without rewriting the whole thing. 
-            # HOWEVER, we can monkey-patch socket.getaddrinfo contextually or use a hack.
-            
-            # Actually, a cleaner way in a custom backend:
-            # We can resolve the host manually to an IPv4 address before passing it to the superclass.
-            # This bypasses the system's potential preference for IPv6.
-            
+            # Monkey-patch socket.getaddrinfo to force IPv4
+            # This ensures we connect via IPv4 (fixing Network Unreachable)
+            # BUT we keep the hostname in self.host so SSL verification passes!
+            original_getaddrinfo = socket.getaddrinfo
+
+            def ipv4_only_getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+                # Force AF_INET (IPv4) regardless of what was requested
+                return original_getaddrinfo(host, port, socket.AF_INET, type, proto, flags)
+
+            socket.getaddrinfo = ipv4_only_getaddrinfo
+
             try:
-                # Get the first IPv4 address
-                addr_info = socket.getaddrinfo(self.host, self.port, family=socket.AF_INET)
-                if addr_info:
-                    # (family, type, proto, canonname, sockaddr)
-                    # sockaddr is (address, port)
-                    self.host = addr_info[0][4][0]
-            except Exception:
-                # Fallback to original host if resolution fails
-                pass
-                
-            self.connection = self.connection_class(
-                self.host, self.port, **connection_params
-            )
+                self.connection = self.connection_class(
+                    self.host, self.port, **connection_params
+                )
+            finally:
+                # Restore original getaddrinfo immediately
+                socket.getaddrinfo = original_getaddrinfo
             
             if not self.use_ssl and self.use_tls:
                 self.connection.starttls(context=ssl.create_default_context())
@@ -48,6 +42,10 @@ class EmailBackend(DjangoEmailBackend):
                 
             return True
         except OSError:
+            if not self.fail_silently:
+                raise
+            
+        return False
             if not self.fail_silently:
                 raise
             
