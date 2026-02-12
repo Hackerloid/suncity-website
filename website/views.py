@@ -4,6 +4,9 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .models import ContactSubmission, BlogPost, Booking, Service
 from .forms import BookingForm
+import logging
+
+logger = logging.getLogger(__name__)
 
 def index(request):
     latest_posts = BlogPost.objects.order_by('-created_at')[:3]
@@ -55,14 +58,15 @@ def contact(request):
                     recipient_list=[email],
                     fail_silently=False,
                 )
+
             except Exception as e:
-                print(f"Error sending email: {e}")
+                logger.error(f"Error sending email: {e}", exc_info=True)
                 # Don't fail the form if email fails, just log it
                 pass
             
             success = True
         except Exception as e:
-            print(f"Error saving contact submission: {e}")
+            logger.error(f"Error saving contact submission: {e}", exc_info=True)
             error_message = f"Contact Error: {e}"
         
     return render(request, 'website/contact.html', {'success': success, 'error_message': error_message})
@@ -104,15 +108,16 @@ def book_consultation(request):
                         recipient_list=[booking.email],
                         fail_silently=False,
                     )
+
                 except Exception as e:
-                    print(f"Error sending email: {e}")
+                    logger.error(f"Error sending email: {e}", exc_info=True)
                     # Don't fail the form if email fails, just log it
                     pass
 
                 success = True
                 return render(request, 'website/booking.html', {'success': success})
             except Exception as e:
-                print(f"Error saving booking: {e}")
+                logger.error(f"Error saving booking: {e}", exc_info=True)
                 error_message = f"Booking Error: {e}"
         else:
             error_message = "Please check the form and try again."
@@ -122,16 +127,39 @@ def book_consultation(request):
     return render(request, 'website/booking.html', {'form': form, 'success': success, 'error_message': error_message})
 
 def test_db(request):
+    results = []
+    
+    # 1. Database Test
     try:
         from .models import ContactSubmission
+        # Create
         c = ContactSubmission.objects.create(
             full_name="Diagnostic Test",
             email="test@suncity.com",
             subject="Test",
             message="Testing DB"
         )
+        # Delete
         c.delete()
-        return HttpResponse("✅ Database Write/Delete: SUCCESS")
+        results.append("✅ Database Write/Delete: SUCCESS")
     except Exception as e:
         import traceback
-        return HttpResponse(f"❌ Database Error: {e}<br><pre>{traceback.format_exc()}</pre>")
+        logger.error(f"Database Test Failed: {e}", exc_info=True)
+        results.append(f"❌ Database Error: {e}<br><pre>{traceback.format_exc()}</pre>")
+
+    # 2. Email Test
+    try:
+        send_mail(
+            subject="Diagnostic Email Test",
+            message="If you received this, email sending is working.",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.EMAIL_HOST_USER],
+            fail_silently=False,
+        )
+        results.append("✅ Email Sending: SUCCESS")
+    except Exception as e:
+        import traceback
+        logger.error(f"Email Test Failed: {e}", exc_info=True)
+        results.append(f"❌ Email Error: {e}<br><pre>{traceback.format_exc()}</pre>")
+        
+    return HttpResponse("<br>".join(results))
