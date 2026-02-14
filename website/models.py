@@ -38,6 +38,13 @@ class BlogPost(models.Model):
         return self.title
 
 class Booking(models.Model):
+    WORKFLOW_STATUS_CHOICES = [
+        ('new', 'New'),
+        ('contacted', 'Contacted'),
+        ('in-progress', 'In Progress'),
+        ('closed', 'Closed'),
+    ]
+
     name = models.CharField(max_length=255)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
