@@ -1,0 +1,49 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Message Details</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="mailto:{{ contact.email }}" class="btn btn-sm btn-outline-primary">Reply via Email</a>
+            <form method="post" action="{% url 'contact_delete' contact.id %}" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this message?');">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>Subject:</strong> {{ contact.subject }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ contact.full_name }} <small class="text-muted">({{ contact.email }})</small></h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ contact.created_at }}</h6>
+                <p class="card-text mt-3" style="white-space: pre-wrap;">{{ contact.message }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Update Status</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <select name="status" class="form-select">
+                            {% for key, value in contact.STATUS_CHOICES %}
+                                <option value="{{ key }}" {% if contact.status == key %}selected{% endif %}>{{ value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Update Status</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

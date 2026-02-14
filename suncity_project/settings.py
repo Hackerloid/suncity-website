@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'dashboard',  # New Management System App
 ]
 
 MIDDLEWARE = [

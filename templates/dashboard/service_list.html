@@ -1,0 +1,55 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Services</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="{% url 'service_create' %}" class="btn btn-sm btn-outline-primary">
+            <i class="fas fa-plus"></i> Add New Service
+        </a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Order</th>
+                <th>Title</th>
+                <th>Tagline</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for service in services %}
+            <tr>
+                <td>{{ service.order }}</td>
+                <td>
+                    <i class="{{ service.icon_class }} me-2"></i> {{ service.title }}
+                </td>
+                <td>{{ service.tagline|truncatechars:50 }}</td>
+                <td>
+                    {% if service.is_active %}
+                    <span class="badge bg-success">Active</span>
+                    {% else %}
+                    <span class="badge bg-secondary">Inactive</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'service_edit' service.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <form method="post" action="{% url 'service_delete' service.id %}" class="d-inline" onsubmit="return confirm('Delete this service?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No services found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -28,6 +28,9 @@
             <a href="{% url 'services' %}" class="nav-primary"><i class="fas fa-tools"></i> Services</a>
             <a href="{% url 'blog_list' %}" class="nav-secondary"><i class="fas fa-newspaper"></i> Blog</a>
             <a href="{% url 'contact' %}" class="nav-secondary"><i class="fas fa-phone"></i> Contact</a>
+            {% if user.is_staff %}
+            <a href="{% url 'dashboard_home' %}" class="nav-secondary" style="color: #f39c12;"><i class="fas fa-tachometer-alt"></i> Manage</a>
+            {% endif %}
             
             <div class="menu-divider"></div>
             
@@ -57,6 +60,9 @@
                 <a href="{% url 'about' %}">About</a>
                 <a href="{% url 'blog_list' %}">Blog</a>
                 <a href="{% url 'contact' %}">Contact</a>
+                {% if user.is_staff %}
+                <a href="{% url 'dashboard_home' %}" style="color: #f39c12; font-weight: bold;">Manage</a>
+                {% endif %}
                 <a href="{% url 'book_consultation' %}" class="btn btn-primary nav-cta">Book Now</a>
             </nav>
         </div>

@@ -1,0 +1,88 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Booking Details #{{ booking.id }}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a href="mailto:{{ booking.email }}" class="btn btn-sm btn-outline-primary me-2">Email Client</a>
+        <a href="tel:{{ booking.phone }}" class="btn btn-sm btn-outline-secondary">Call {{ booking.phone }}</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>Service Request:</strong> {{ booking.get_service_display }}
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Client Name:</strong><br>
+                        {{ booking.name }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Contact Info:</strong><br>
+                        {{ booking.email }}<br>
+                        {{ booking.phone }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <strong>Requested Date:</strong><br>
+                        {{ booking.date|date:"l, F d, Y" }}
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Requested Time:</strong><br>
+                        {{ booking.time|time:"H:i A" }}
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <strong>Additional Notes:</strong>
+                    <p class="card-text bg-light p-3 rounded">{{ booking.message|default:"No notes provided." }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Booking Status</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="update_type" value="status">
+                    <div class="mb-3">
+                        <label class="form-label">Confirmation Status</label>
+                        <select name="status" class="form-select">
+                            <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Pending</option>
+                            <option value="confirmed" {% if booking.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                            <option value="cancelled" {% if booking.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Update Status</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Workflow Stage</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="update_type" value="workflow">
+                    <div class="mb-3">
+                        <label class="form-label">Internal Progress</label>
+                        <select name="workflow_status" class="form-select">
+                            {% for key, value in booking.WORKFLOW_STATUS_CHOICES %}
+                                <option value="{{ key }}" {% if booking.workflow_status == key %}selected{% endif %}>{{ value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-secondary w-100">Update Workflow</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
