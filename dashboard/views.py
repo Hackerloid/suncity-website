@@ -3,26 +3,22 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from django.http import HttpResponse # Temporary for debug
-import traceback
+
 
 def dashboard_login(request):
-    try:
-        if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                if user.is_staff:
-                    login(request, user)
-                    return redirect('dashboard_home')
-                else:
-                    messages.error(request, "Access denied. Admin privileges required.")
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            if user.is_staff:
+                login(request, user)
+                return redirect('dashboard_home')
             else:
-                messages.error(request, "Invalid username or password.")
-        return render(request, 'dashboard/login.html')
-    except Exception as e:
-        return HttpResponse(f"<h1>Dashboard Error</h1><p>{e}</p><pre>{traceback.format_exc()}</pre>", status=500)
+                messages.error(request, "Access denied. Admin privileges required.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    return render(request, 'dashboard/login.html')
 
 def dashboard_logout(request):
     logout(request)
