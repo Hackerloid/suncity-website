@@ -154,6 +154,12 @@
             border: 1px solid rgba(255,255,255,0.1);
             color: white;
         }
+
+        /* Fix for invisible dropdown text on some browsers */
+        .form-select option {
+            background-color: var(--bg-lighter);
+            color: white;
+        }
         
         .form-control:focus, .form-select:focus {
             background-color: rgba(255,255,255,0.1);
@@ -165,6 +171,23 @@
         .card {
             background-color: rgba(255,255,255,0.02);
             border: var(--border-glass);
+            border-radius: 12px;
+        }
+
+        .card-header {
+            background-color: rgba(255,255,255,0.05);
+            border-bottom: var(--border-glass);
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        .card-body {
+            color: var(--text-main);
+        }
+
+        .card-title {
+            color: var(--primary);
         }
     </style>
 </head>
