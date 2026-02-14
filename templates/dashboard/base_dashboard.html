@@ -92,6 +92,8 @@
         .table {
             --bs-table-bg: transparent;
             --bs-table-color: var(--text-main);
+            --bs-table-hover-color: var(--text-main);
+            --bs-table-hover-bg: rgba(255, 255, 255, 0.05);
             border-color: rgba(255,255,255,0.1);
         }
         
@@ -107,6 +109,17 @@
         .table td {
             border-bottom: 1px solid rgba(255,255,255,0.05);
             vertical-align: middle;
+            color: var(--text-muted);
+        }
+
+        .table-striped > tbody > tr:nth-of-type(odd) > * {
+            --bs-table-accent-bg: rgba(255, 255, 255, 0.02);
+            color: var(--text-main);
+        }
+        
+        .table-hover > tbody > tr:hover > * {
+            --bs-table-accent-bg: rgba(0, 242, 254, 0.05);
+            color: white;
         }
 
         /* Bootstrap Overrides */

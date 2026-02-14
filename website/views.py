@@ -120,7 +120,11 @@ def book_consultation(request):
                 logger.error(f"Error saving booking: {e}", exc_info=True)
                 error_message = f"Booking Error: {e}"
         else:
-            error_message = "Please check the form and try again."
+            # Debugging: Show specific errors
+            error_details = []
+            for field, errors in form.errors.items():
+                error_details.append(f"{field}: {', '.join(errors)}")
+            error_message = f"Please check the form: {'; '.join(error_details)}"
     else:
         form = BookingForm()
     
