@@ -166,9 +166,7 @@ if not DEBUG:
     if not EMAIL_HOST_PASSWORD:
         print("WARNING: EMAIL_HOST_PASSWORD not set. Email functionality will fail.")
 
-LOGIN_URL = 'dashboard_login'
-LOGIN_REDIRECT_URL = 'dashboard_home'
-LOGOUT_REDIRECT_URL = 'home'
+
         # We allow deployment to continue so you can see the site and logs.
 
 # Logging Configuration
