@@ -4,50 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}SunCity Dashboard{% endblock %}</title>
-    <!-- Use the same CSS for now, or a separate dashboard.css -->
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
     <style>
+        :root {
+            --primary: #00f2fe;
+            --primary-dark: #4facfe;
+            --accent: #ff0055;
+            --bg-dark: #050a14;
+            --bg-lighter: #0d1b2a;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-glass: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             overflow-x: hidden;
         }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+        }
+
+        /* Sidebar Styles */
         .sidebar {
             height: 100vh;
-            background: #2c3e50;
+            background: var(--bg-lighter);
+            border-right: var(--border-glass);
             color: white;
             position: fixed;
             width: 250px;
             padding-top: 20px;
+            z-index: 100;
         }
+
         .sidebar a {
             padding: 15px 25px;
             text-decoration: none;
-            font-size: 1.1rem;
-            color: #bdc3c7;
+            font-size: 1.05rem;
+            color: var(--text-muted);
             display: block;
             transition: 0.3s;
+            border-left: 3px solid transparent;
         }
+
         .sidebar a:hover {
-            color: white;
-            background: #34495e;
+            color: var(--primary);
+            background: rgba(0, 242, 254, 0.05);
+            border-left-color: var(--primary);
         }
+
         .sidebar .active {
-            background: #1abc9c;
-            color: white;
+            background: rgba(0, 242, 254, 0.1);
+            color: var(--primary);
+            border-left-color: var(--primary);
         }
+
+        /* Content Area */
         .content {
             margin-left: 250px;
-            padding: 20px;
+            padding: 30px;
         }
+
+        /* Cards */
         .card-stat {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: var(--border-glass);
+            border-radius: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+        
         .card-stat:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+
+        /* Tables Override */
+        .table {
+            --bs-table-bg: transparent;
+            --bs-table-color: var(--text-main);
+            border-color: rgba(255,255,255,0.1);
+        }
+        
+        .table thead th {
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .table td {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: middle;
+        }
+
+        /* Bootstrap Overrides */
+        .btn-primary {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            color: #000;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+        
+        /* Form Controls */
+        .form-control, .form-select {
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background-color: rgba(255,255,255,0.1);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 0.25rem rgba(0, 242, 254, 0.25);
+        }
+        
+        .card {
+            background-color: rgba(255,255,255,0.02);
+            border: var(--border-glass);
         }
     </style>
 </head>
