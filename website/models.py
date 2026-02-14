@@ -38,25 +38,10 @@ class BlogPost(models.Model):
         return self.title
 
 class Booking(models.Model):
-    SERVICE_CHOICES = [
-        ('cybersecurity', 'Cybersecurity'),
-        ('networking', 'Networking'),
-        ('it-support', 'IT Support'),
-        ('software-dev', 'Software Development'),
-        ('consulting', 'General Consulting'),
-    ]
-    
-    WORKFLOW_STATUS_CHOICES = [
-        ('new', 'New'),
-        ('contacted', 'Contacted'),
-        ('in-progress', 'In Progress'),
-        ('closed', 'Closed'),
-    ]
-
     name = models.CharField(max_length=255)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
-    service = models.CharField(max_length=50, choices=SERVICE_CHOICES)
+    service = models.CharField(max_length=255) # Changed from choices to open text to support dynamic services
     date = models.DateField()
     time = models.TimeField()
     message = models.TextField(blank=True)
