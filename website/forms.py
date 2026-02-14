@@ -2,6 +2,11 @@ from django import forms
 from .models import Booking, Service
 
 class BookingForm(forms.ModelForm):
+    service = forms.ChoiceField(
+        choices=[('', 'Select a Service')],
+        widget=forms.Select(attrs={'class': 'form-input'})
+    )
+
     class Meta:
         model = Booking
         fields = ['name', 'email', 'phone', 'service', 'date', 'time', 'message']
@@ -11,7 +16,6 @@ class BookingForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Full Name'}),
             'email': forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'john@example.com'}),
             'phone': forms.TextInput(attrs={'class': 'form-input', 'placeholder': '+233 ...'}),
-            'service': forms.Select(attrs={'class': 'form-input'}),
             'message': forms.Textarea(attrs={'class': 'form-input', 'rows': 4, 'placeholder': 'Any specific details?'}),
         }
 
