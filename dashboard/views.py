@@ -139,7 +139,7 @@ def blog_create(request):
             post.author = request.user
             post.save()
             messages.success(request, "Blog post created successfully.")
-            return redirect('blog_list')
+            return redirect('dashboard_blog_list')
     else:
         form = BlogPostForm()
     return render(request, 'dashboard/blog_form.html', {'form': form, 'title': 'Create Blog Post'})
@@ -155,7 +155,7 @@ def blog_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "Blog post updated successfully.")
-            return redirect('blog_list')
+            return redirect('dashboard_blog_list')
     else:
         form = BlogPostForm(instance=post)
     return render(request, 'dashboard/blog_form.html', {'form': form, 'title': 'Edit Blog Post'})
@@ -169,7 +169,7 @@ def blog_delete(request, pk):
     if request.method == 'POST':
         post.delete()
         messages.success(request, "Blog post deleted.")
-    return redirect('blog_list')
+    return redirect('dashboard_blog_list')
 
 # --- Service Management ---
 @login_required

@@ -60,16 +60,16 @@
     <a href="{% url 'dashboard_home' %}" class="{% if request.resolver_match.url_name == 'dashboard_home' %}active{% endif %}">
         <i class="fas fa-home me-2"></i> Overview
     </a>
-    <a href="#">
+    <a href="{% url 'contact_list' %}" class="{% if 'contacts' in request.path %}active{% endif %}">
         <i class="fas fa-envelope me-2"></i> Messages
     </a>
-    <a href="#">
+    <a href="{% url 'booking_list' %}" class="{% if 'bookings' in request.path %}active{% endif %}">
         <i class="fas fa-calendar-check me-2"></i> Bookings
     </a>
-    <a href="#">
+    <a href="{% url 'dashboard_blog_list' %}" class="{% if 'blog' in request.path %}active{% endif %}">
         <i class="fas fa-newspaper me-2"></i> Blog Posts
     </a>
-    <a href="#">
+    <a href="{% url 'service_list' %}" class="{% if 'services' in request.path %}active{% endif %}">
         <i class="fas fa-tools me-2"></i> Services
     </a>
     <div class="mt-5">

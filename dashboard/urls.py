@@ -16,10 +16,10 @@ urlpatterns = [
     path('bookings/<int:pk>/', views.booking_detail, name='booking_detail'),
 
     # Blog Management
-    path('blog/', views.blog_list, name='blog_list'),
-    path('blog/add/', views.blog_create, name='blog_create'),
-    path('blog/<int:pk>/edit/', views.blog_edit, name='blog_edit'),
-    path('blog/<int:pk>/delete/', views.blog_delete, name='blog_delete'),
+    path('blog/', views.blog_list, name='dashboard_blog_list'),
+    path('blog/add/', views.blog_create, name='dashboard_blog_create'),
+    path('blog/<int:pk>/edit/', views.blog_edit, name='dashboard_blog_edit'),
+    path('blog/<int:pk>/delete/', views.blog_delete, name='dashboard_blog_delete'),
 
     # Service Management
     path('services/', views.service_list, name='service_list'),

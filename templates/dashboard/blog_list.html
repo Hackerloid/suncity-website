@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Blog Posts</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-        <a href="{% url 'blog_create' %}" class="btn btn-sm btn-outline-primary">
+        <a href="{% url 'dashboard_blog_create' %}" class="btn btn-sm btn-outline-primary">
             <i class="fas fa-plus"></i> Create New Post
         </a>
     </div>
@@ -27,8 +27,8 @@
                 <td>{{ post.author.username }}</td>
                 <td>{{ post.created_at|date:"M d, Y" }}</td>
                 <td>
-                    <a href="{% url 'blog_edit' post.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                    <form method="post" action="{% url 'blog_delete' post.id %}" class="d-inline" onsubmit="return confirm('Delete this post?');">
+                    <a href="{% url 'dashboard_blog_edit' post.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <form method="post" action="{% url 'dashboard_blog_delete' post.id %}" class="d-inline" onsubmit="return confirm('Delete this post?');">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                     </form>
